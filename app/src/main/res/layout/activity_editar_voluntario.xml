@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarVoluntarioActivity">
+
+    <TextView
+        android:id="@+id/text_secao_trabalho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Trabalho"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_atividade_voluntaria"
+        android:layout_width="173dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/fundo_arredondado_com_sombra"
+        android:gravity="center_vertical"
+        android:textColorHint="@color/black"
+        app:boxBackgroundMode="none"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/text_layout_dias_semana"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_secao_trabalho">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_atividade_voluntaria"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/inter"
+            android:hint="Atividade Voluntária def."
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textColorHint="@color/black"
+            android:textColorLink="@color/black"
+            android:textCursorDrawable="@drawable/cursor_input_preto"
+            android:textSize="13sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_dias_semana"
+        android:layout_width="173dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/fundo_arredondado_com_sombra"
+        android:gravity="center_vertical"
+        android:textColorHint="@color/black"
+        app:boxBackgroundMode="none"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/text_layout_atividade_voluntaria"
+        app:layout_constraintTop_toTopOf="@+id/text_layout_atividade_voluntaria">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_dias_semana"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/inter"
+            android:hint="Dias da semana def."
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textColorHint="@color/black"
+            android:textColorLink="@color/black"
+            android:textCursorDrawable="@drawable/cursor_input_preto"
+            android:textSize="13sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_horario"
+        android:layout_width="173dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/fundo_arredondado_com_sombra"
+        android:gravity="center_vertical"
+        android:textColorHint="@color/black"
+        app:boxBackgroundMode="none"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/text_layout_forma_trabalho"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_layout_atividade_voluntaria">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_horario"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/inter"
+            android:hint="Horário def."
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textColorHint="@color/black"
+            android:textColorLink="@color/black"
+            android:textCursorDrawable="@drawable/cursor_input_preto"
+            android:textSize="13sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_layout_forma_trabalho"
+        android:layout_width="173dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/fundo_arredondado_com_sombra"
+        android:gravity="center_vertical"
+        android:textColorHint="@color/black"
+        app:boxBackgroundMode="none"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/text_layout_horario"
+        app:layout_constraintTop_toTopOf="@+id/text_layout_horario">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_forma_trabalho"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/inter"
+            android:hint="Forma de trabalho def."
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/black"
+            android:textColorHint="@color/black"
+            android:textColorLink="@color/black"
+            android:textCursorDrawable="@drawable/cursor_input_preto"
+            android:textSize="13sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_entrar"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/amarelo"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/editar"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_layout_forma_trabalho" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
