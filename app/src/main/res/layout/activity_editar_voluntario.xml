@@ -347,86 +347,39 @@
             app:layout_constraintTop_toBottomOf="@+id/inputCidadePreenchidoLayout" />
 
         <TextView
-            android:id="@+id/textCopiaRgEditar"
+            android:id="@+id/text_assinatura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="70dp"
-            android:text="Cópia RG"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="Assinatura"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textCopiaCpfEditar"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textImagensEditar" />
 
         <Button
-            android:id="@+id/buttonCopiaRgEditar"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_assinatura"
+            android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="13dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/white"
             android:text="Escolha um arquivo"
             android:textColor="@color/black"
+            android:textColorLink="@color/white"
+            android:textSize="14sp"
             android:textStyle="normal"
             app:cornerRadius="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonCopiaCpfEditar"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textCopiaRgEditar" />
-
-        <TextView
-            android:id="@+id/textCopiaCpfEditar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginTop="7dp"
-            android:text="Cópia CPF"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textCopiaRgEditar"
-            app:layout_constraintTop_toBottomOf="@+id/textImagensEditar" />
-
-        <Button
-            android:id="@+id/buttonCopiaCpfEditar"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginTop="7dp"
-            android:text="Escolha um arquivo"
-            android:textColor="@color/black"
-            app:cornerRadius="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buttonCopiaRgEditar"
-            app:layout_constraintTop_toBottomOf="@+id/textCopiaCpfEditar" />
-
-        <TextView
-            android:id="@+id/textComprovanteResidenciaEditar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="19dp"
-            android:text="Comprovante de residência"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/buttonCopiaRgEditar" />
-
-        <Button
-            android:id="@+id/buttonComprovanteResidenciaEditar"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="5dp"
-            android:text="Escolha um arquivo"
-            android:textColor="@color/black"
-            app:cornerRadius="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/textComprovanteResidenciaEditar" />
+            app:layout_constraintTop_toBottomOf="@+id/text_assinatura" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -435,16 +388,6 @@
             android:orientation="vertical"
             app:layout_constraintGuide_begin="198dp"
             app:layout_constraintGuide_percent="0.5" />
-
-        <ImageView
-            android:id="@+id/imgBaixo_Editar"
-            android:layout_width="306dp"
-            android:layout_height="289dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="-82dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:srcCompat="@drawable/bordas_app" />
 
         <TextView
             android:id="@+id/text_secao_trabalho"
@@ -457,9 +400,8 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonComprovanteResidenciaEditar" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_assinatura" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_layout_atividade_voluntaria"
@@ -488,7 +430,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/inter"
-                android:hint="Atividade Voluntária def."
+                android:hint="Atividade Voluntária"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/black"
                 android:textColorHint="@color/black"
@@ -524,7 +466,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/inter"
-                android:hint="Dias da semana def."
+                android:hint="Dias da semana"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/black"
                 android:textColorHint="@color/black"
@@ -561,7 +503,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/inter"
-                android:hint="Horário def."
+                android:hint="Horário"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/black"
                 android:textColorHint="@color/black"
@@ -597,7 +539,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/inter"
-                android:hint="Forma de trabalho def."
+                android:hint="Forma de trabalho"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/black"
                 android:textColorHint="@color/black"
@@ -616,7 +558,7 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/amarelo"
             android:fontFamily="@font/inter_bold"
-            android:text="@string/editar"
+            android:text="@string/cadastrar"
             android:textSize="21sp"
             android:textStyle="bold"
             app:cornerRadius="8dp"

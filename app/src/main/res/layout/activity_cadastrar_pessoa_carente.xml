@@ -363,7 +363,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputCidadeLayout" />
 
         <TextView
-            android:id="@+id/textRg"
+            android:id="@+id/text_assinatura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -382,7 +382,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textImagens" />
 
         <Button
-            android:id="@+id/buttonRg"
+            android:id="@+id/btn_assinatura"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
@@ -398,7 +398,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textRg" />
+            app:layout_constraintTop_toBottomOf="@+id/text_assinatura" />
 
         <TextView
             android:id="@+id/textCpf"
@@ -414,7 +414,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textRg"
+            app:layout_constraintStart_toEndOf="@+id/text_assinatura"
             app:layout_constraintTop_toBottomOf="@+id/textImagens" />
 
         <Button
@@ -431,7 +431,7 @@
             app:cornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buttonRg"
+            app:layout_constraintStart_toEndOf="@+id/btn_assinatura"
             app:layout_constraintTop_toBottomOf="@+id/textCpf" />
 
         <TextView
@@ -448,7 +448,7 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/buttonRg" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_assinatura" />
 
         <Button
             android:id="@+id/buttonComprovanteResidencia"
