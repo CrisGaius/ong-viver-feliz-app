@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "71835604132",
+    "project_id": "testesfirebase-f5324",
+    "storage_bucket": "testesfirebase-f5324.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71835604132:android:8e6ad590493d6fda274231",
+        "android_client_info": {
+          "package_name": "com.aislandayvson.testefirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO5cqDMnl7coXeMF013aVlcV-25z03v4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
