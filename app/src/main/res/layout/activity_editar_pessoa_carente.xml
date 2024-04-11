@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity2">
+
+        <ImageView
+            android:id="@+id/imgCima_Editar"
+            android:layout_width="314dp"
+            android:layout_height="317dp"
+            android:layout_marginTop="-94dp"
+            android:layout_marginEnd="-170dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bordas_app" />
+
+        <ImageView
+            android:id="@+id/imgMeio_Editar"
+            android:layout_width="306dp"
+            android:layout_height="289dp"
+            android:layout_marginStart="-124dp"
+            android:layout_marginTop="436dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bordas_app" />
+
+        <ImageView
+            android:id="@+id/logoImagemEditar"
+            android:layout_width="143dp"
+            android:layout_height="143dp"
+            android:layout_marginTop="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_ong" />
+
+        <TextView
+            android:id="@+id/textEditarPessoaCarente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="EDITAR PESSOA CARENTE"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoImagemEditar" />
+
+        <TextView
+            android:id="@+id/textInformacoesPessoaisEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="Informações Pessoais"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textEditarPessoaCarente" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputNomePreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="356dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInformacoesPessoaisEditar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Nome Preenchido"
+                android:inputType="text"
+                android:maxLength="100"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputDataNascPreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/inputTelefonePreenchidoLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputNomePreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Data Preenchida"
+                android:inputType="datetime|date"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputTelefonePreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/inputDataNascPreenchidoLayout"
+            app:layout_constraintTop_toBottomOf="@+id/inputNomePreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Telefone Preenchido"
+                android:inputType="number|phone"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputRgPreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/inputCpfPreenchidoLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputDataNascPreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="RG Preenchido"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputCpfPreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/inputRgPreenchidoLayout"
+            app:layout_constraintTop_toBottomOf="@+id/inputTelefonePreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="CPF Preenchido"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputEmailPreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="356dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputRgPreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Email Preenchido"
+                android:inputType="text"
+                android:maxLength="100"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textEnderecoEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="Endereço"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputEmailPreenchidoLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputRuaPreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="356dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textEnderecoEditar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Rua Informada"
+                android:inputType="text"
+                android:maxLength="100"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputNumResidenciaPreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/inputBairroPreenchidoLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/imgMeio_Editar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputRuaPreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Nº da Residência Informado"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputBairroPreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/inputNumResidenciaPreenchidoLayout"
+            app:layout_constraintTop_toBottomOf="@+id/inputRuaPreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Bairro Informado"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputCidadePreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/inputEstadoPreenchidoLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/imgMeio_Editar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputNumResidenciaPreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Cidade Informada"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputEstadoPreenchidoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/inputCidadePreenchidoLayout"
+            app:layout_constraintTop_toBottomOf="@+id/inputBairroPreenchidoLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Estado Informado"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textImagensEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="Imagens"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputCidadePreenchidoLayout" />
+
+        <TextView
+            android:id="@+id/textCopiaRgEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="70dp"
+            android:text="Cópia RG"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/textCopiaCpfEditar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textImagensEditar" />
+
+        <Button
+            android:id="@+id/buttonCopiaRgEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="13dp"
+            android:text="Escolha um arquivo"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCopiaCpfEditar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCopiaRgEditar" />
+
+        <TextView
+            android:id="@+id/textCopiaCpfEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="7dp"
+            android:text="Cópia CPF"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textCopiaRgEditar"
+            app:layout_constraintTop_toBottomOf="@+id/textImagensEditar" />
+
+        <Button
+            android:id="@+id/buttonCopiaCpfEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:text="Escolha um arquivo"
+            android:textColor="@color/black"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonCopiaRgEditar"
+            app:layout_constraintTop_toBottomOf="@+id/textCopiaCpfEditar" />
+
+        <TextView
+            android:id="@+id/textComprovanteResidenciaEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="19dp"
+            android:text="Comprovante de residência"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/buttonCopiaRgEditar" />
+
+        <Button
+            android:id="@+id/buttonComprovanteResidenciaEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="47sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
+            android:text="Escolha um arquivo"
+            android:textColor="@color/black"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/textComprovanteResidenciaEditar" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="198dp"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <Button
+            android:id="@+id/buttonEditar"
+            android:layout_width="358dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="128dp"
+            android:backgroundTint="@color/amarelo"
+            android:backgroundTintMode="add"
+            android:text="EDITAR"
+            android:textColor="@color/black"
+            android:textColorLink="@color/azul"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonComprovanteResidenciaEditar"  />
+
+        <ImageView
+            android:id="@+id/imgBaixo_Editar"
+            android:layout_width="306dp"
+            android:layout_height="289dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="-82dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@drawable/bordas_app" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

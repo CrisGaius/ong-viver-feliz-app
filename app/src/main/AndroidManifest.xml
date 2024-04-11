@@ -15,6 +15,21 @@
         android:theme="@style/Theme.OngViverFeliz"
         tools:targetApi="31">
         <activity
+            android:name=".ListaVoluntarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListaContratosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListaPessoasCarentesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarPessoaCarenteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CadastrarPessoaCarenteActivity"
+            android:exported="false" />
+        <activity
             android:name=".CadastrarVoluntarioActivity"
             android:exported="false" />
         <activity

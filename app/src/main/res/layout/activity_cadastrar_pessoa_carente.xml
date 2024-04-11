@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azul"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:context=".CadastrarPessoaCarenteActivit">
+
+        <ImageView
+            android:id="@+id/imgCima_Cadastrar"
+            android:layout_width="314dp"
+            android:layout_height="317dp"
+            android:layout_marginTop="-95dp"
+            android:layout_marginEnd="-170dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bordas_app" />
+
+        <ImageView
+            android:id="@+id/imgMeio_Cadastrar"
+            android:layout_width="306dp"
+            android:layout_height="289dp"
+            android:layout_marginStart="-124dp"
+            android:layout_marginTop="436dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bordas_app" />
+
+        <ImageView
+            android:id="@+id/imgBaixo_Cadastrar"
+            android:layout_width="306dp"
+            android:layout_height="289dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="-82dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:srcCompat="@drawable/bordas_app" />
+
+        <ImageView
+            android:id="@+id/logoImagem"
+            android:layout_width="143dp"
+            android:layout_height="143dp"
+            android:layout_marginTop="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_ong" />
+
+        <TextView
+            android:id="@+id/textCadastrarPessoaCarente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="CADASTRO PESSOA CARENTE"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoImagem" />
+
+        <TextView
+            android:id="@+id/textInformacoesPessoais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="Informações Pessoais"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCadastrarPessoaCarente" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputNomeLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="356dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInformacoesPessoais">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Nome"
+                android:inputType="text"
+                android:maxLength="100"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputDataNascLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/inputTelefoneLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputNomeLayout">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Data de Nascimento"
+                android:inputType="datetime|date"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputTelefoneLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/inputDataNascLayout"
+            app:layout_constraintTop_toBottomOf="@+id/inputNomeLayout">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Telefone"
+                android:inputType="number|phone"
+                android:maxLength="11"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputRgLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/inputCpfLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputDataNascLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="RG"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputCpfLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/inputRgLayout"
+            app:layout_constraintTop_toBottomOf="@+id/inputTelefoneLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="CPF"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputEmailLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="356dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputRgLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:maxLength="100"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textEndereco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="Endereço"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputEmailLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputRuaLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="356dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textEndereco">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Rua"
+                android:inputType="text"
+                android:maxLength="100"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputNumResidenciaLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/inputBairroLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputRuaLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Nº da residência"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputBairroLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/inputNumResidenciaLayout"
+            app:layout_constraintTop_toBottomOf="@+id/inputRuaLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Bairro"
+                android:inputType="text"
+                android:maxLength="11"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputCidadeLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/inputEstadoLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputNumResidenciaLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Cidade"
+                android:maxLength="10"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputEstadoLayout"
+            style="@style/Widget.Material3.TextInputLayout.FilledBox"
+            android:layout_width="168.8dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/inputCidadeLayout"
+            app:layout_constraintTop_toBottomOf="@+id/inputBairroLayout">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fundo_arredondado_com_sombra"
+                android:hint="Estado"
+                android:maxLength="11"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textImagens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="Imagens"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputCidadeLayout" />
+
+        <TextView
+            android:id="@+id/textRg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="140dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="Cópia RG"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/textCpf"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textImagens" />
+
+        <Button
+            android:id="@+id/buttonRg"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/white"
+            android:text="Escolha um arquivo"
+            android:textColor="@color/black"
+            android:textColorLink="@color/white"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/buttonCpf"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textRg" />
+
+        <TextView
+            android:id="@+id/textCpf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="Cópia CPF"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textRg"
+            app:layout_constraintTop_toBottomOf="@+id/textImagens" />
+
+        <Button
+            android:id="@+id/buttonCpf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:backgroundTint="@color/white"
+            android:text="Escolha um arquivo"
+            android:textColor="@color/black"
+            android:textColorLink="@color/white"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonRg"
+            app:layout_constraintTop_toBottomOf="@+id/textCpf" />
+
+        <TextView
+            android:id="@+id/textComprovanteResidencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="19dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="Comprovante de residência"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/buttonRg" />
+
+        <Button
+            android:id="@+id/buttonComprovanteResidencia"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="@color/white"
+            android:text="Escolha um arquivo"
+            android:textColor="@color/black"
+            android:textColorLink="@color/white"
+            android:textSize="14sp"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/textComprovanteResidencia" />
+
+        <Button
+            android:id="@+id/buttonCadastrar"
+            android:layout_width="358dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="128dp"
+            android:backgroundTint="@color/amarelo"
+            android:backgroundTintMode="add"
+            android:text="CADASTRAR"
+            android:textColor="@color/black"
+            android:textColorLink="@color/azul"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonComprovanteResidencia" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="246dp"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

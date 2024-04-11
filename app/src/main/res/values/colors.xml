@@ -4,4 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="azul">#007FFC</color>
     <color name="amarelo">#FEED01</color>
+    <color name="vermelho">#FF1F00</color>
+    <color name="verde">#4CAF50</color>
+    <color name="azulPesquisa">#3F51B5</color>
 </resources>
