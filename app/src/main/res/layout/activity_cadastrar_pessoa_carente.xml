@@ -101,6 +101,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextNomePessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -126,6 +127,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDataNascPessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -148,6 +150,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextTelefonePessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -172,6 +175,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputDataNascLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextRgPessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -194,6 +198,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputTelefoneLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCpfPessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -215,6 +220,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputRgLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmailPessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -249,6 +255,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textEndereco">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextRuaPessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -272,6 +279,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputRuaLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextNumResidPessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -295,6 +303,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputRuaLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextBairroPessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -318,6 +327,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputNumResidenciaLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCidadePessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -340,6 +350,7 @@
 
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEstadoPessoaCarente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -466,7 +477,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textComprovanteResidencia" />
 
         <Button
-            android:id="@+id/buttonCadastrar"
+            android:id="@+id/btnCadastrarPessoasCarentes"
             android:layout_width="358dp"
             android:layout_height="57dp"
             android:layout_marginTop="20dp"
