@@ -46,6 +46,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="2dp"
         android:layout_marginEnd="30dp"
+        android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/inter"
         android:text="Escolha um arquivo"
         android:textSize="13sp"
