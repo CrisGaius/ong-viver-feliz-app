@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azul"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:orientation="vertical"
+
+        >
+
+
+        <ImageView
+            android:layout_width="316dp"
+            android:layout_height="189dp"
+            android:layout_marginLeft="238dp"
+            android:layout_marginTop="-50dp"
+            android:src="@drawable/bordas_app" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="-110dp"
+            android:src="@drawable/logo_ong">
+
+        </ImageView>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="7dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:rowCount="3">
+
+
+            <!--cadastrar usuário-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btn_cadastrar_voluntario"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/borda_pesquisa"
+                        android:backgroundTint="@color/azulIconesHomes"
+                        app:srcCompat="@drawable/ic_addhome_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="CADASTRAR VOLUNTÁRIO"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!--listar voluntário-->
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btn_listar_voluntario"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/borda_pesquisa"
+                        android:backgroundTint="@color/azulIconesHomes"
+                        app:srcCompat="@drawable/ic_listahome24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="LISTAR
+                       VOLUNTÁRIO"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!--CADASTRAR PESSOA CARENTE-->
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btn_cadastrar_pessoa_carente"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/borda_pesquisa"
+                        android:backgroundTint="@color/amareloIconesHome"
+                        app:srcCompat="@drawable/ic_addhome_24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="CADASTRAR PESSOA CARENTE"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!--LISTAR PESSOA CARENTE-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btn_listar_pessoa_carente"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/borda_pesquisa"
+                        android:backgroundTint="@color/amareloIconesHome"
+                        app:srcCompat="@drawable/ic_listahome24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="LISTAR PESSOA CARENTE"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <!--ADICIONAR CONTRATOS -->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageButton
+                        android:id="@+id/btn_adicionar_contratos"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/borda_pesquisa"
+                        android:backgroundTint="@color/verde"
+                        app:srcCompat="@drawable/ic_contratohome24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="ADICIONAR CONTRATOS"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/btn_listar_contratos"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/borda_pesquisa"
+                        android:backgroundTint="@color/verde"
+                        app:srcCompat="@drawable/ic_listahome24" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="20dp"
+                        android:text="LISTAR CONTRATOS"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </GridLayout>
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/vermelho"
+            android:drawableRight="@drawable/ic_sair_24"
+            android:drawableTint="@color/white"
+            android:text="Logout"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:cornerRadius="8dp" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</ScrollView>
+

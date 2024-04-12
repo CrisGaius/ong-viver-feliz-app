@@ -15,6 +15,9 @@
         android:theme="@style/Theme.OngViverFeliz"
         tools:targetApi="31">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListaVoluntarioActivity"
             android:exported="false" />
         <activity
