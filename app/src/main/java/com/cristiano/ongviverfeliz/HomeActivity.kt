@@ -25,6 +25,24 @@ class HomeActivity : AppCompatActivity() {
         binding.btnLogout.setOnClickListener {
             deslogarUsuario()
         }
+        binding.btnCadastrarVoluntario.setOnClickListener {
+            startActivity(Intent(this, CadastrarVoluntarioActivity::class.java))
+        }
+        binding.btnListarVoluntario.setOnClickListener {
+            startActivity(Intent(this, ListaVoluntarioActivity::class.java))
+        }
+        binding.btnCadastrarPessoaCarente.setOnClickListener {
+            startActivity(Intent(this, CadastrarPessoaCarenteActivity::class.java))
+        }
+        binding.btnListarPessoaCarente.setOnClickListener {
+            startActivity(Intent(this, ListaPessoasCarentesActivity::class.java))
+        }
+        binding.btnAdicionarContratos.setOnClickListener {
+            startActivity(Intent(this, AdicionarContratoActivity::class.java))
+        }
+        binding.btnListarContratos.setOnClickListener {
+            startActivity(Intent(this, ListaContratosActivity::class.java))
+        }
     }
 
     private fun deslogarUsuario() {

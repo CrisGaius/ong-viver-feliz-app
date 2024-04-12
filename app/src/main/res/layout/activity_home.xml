@@ -59,7 +59,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/btn_cadastrar_voluntario"
+                        android:id="@+id/btnCadastrarVoluntario"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/borda_pesquisa"
@@ -102,7 +102,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/btn_listar_voluntario"
+                        android:id="@+id/btnListarVoluntario"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/borda_pesquisa"
@@ -146,7 +146,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/btn_cadastrar_pessoa_carente"
+                        android:id="@+id/btnCadastrarPessoaCarente"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/borda_pesquisa"
@@ -188,7 +188,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/btn_listar_pessoa_carente"
+                        android:id="@+id/btnListarPessoaCarente"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/borda_pesquisa"
@@ -232,7 +232,7 @@
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageButton
-                        android:id="@+id/btn_adicionar_contratos"
+                        android:id="@+id/btnAdicionarContratos"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/borda_pesquisa"
@@ -270,7 +270,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/btn_listar_contratos"
+                        android:id="@+id/btnListarContratos"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:background="@drawable/borda_pesquisa"
