@@ -566,7 +566,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btn_entrar"
+            android:id="@+id/btnLogar"
             android:layout_width="0dp"
             android:layout_height="58dp"
             android:layout_marginStart="20dp"

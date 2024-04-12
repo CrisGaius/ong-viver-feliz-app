@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/logo_ong" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_layout_usuario"
+        android:id="@+id/textInputLayoutLoginEmail"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
@@ -40,16 +40,17 @@
         app:layout_constraintTop_toBottomOf="@+id/logo_ong">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_usuario"
+            android:id="@+id/editLoginEmail"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:drawableLeft="@drawable/ic_user_24"
+            android:backgroundTint="#FFFFFF"
+            android:drawableStart="@drawable/ic_email_24"
             android:drawablePadding="8dp"
             android:fontFamily="@font/inter"
             android:gravity="left|center_vertical"
-            android:hint="Digite seu usuário"
+            android:hint="Digite seu email"
             android:textColor="@color/black"
             android:textColorHighlight="@color/black"
             android:textColorHint="@color/black"
@@ -60,7 +61,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_layout_senha"
+        android:id="@+id/textInputLayoutLoginSenha"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="20dp"
@@ -79,15 +80,15 @@
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_layout_usuario">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLoginEmail">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_senha"
+            android:id="@+id/editLoginSenha"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:drawableLeft="@drawable/ic_cadeado_24"
+            android:drawableStart="@drawable/ic_cadeado_24"
             android:drawablePadding="8dp"
             android:fontFamily="@font/inter"
             android:gravity="left|center_vertical"
@@ -113,10 +114,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_layout_senha" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLoginSenha" />
 
     <Button
-        android:id="@+id/btn_entrar"
+        android:id="@+id/btnLogar"
         android:layout_width="0dp"
         android:layout_height="58dp"
         android:layout_marginStart="20dp"
