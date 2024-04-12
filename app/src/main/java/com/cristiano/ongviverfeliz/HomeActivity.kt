@@ -1,10 +1,14 @@
 package com.cristiano.ongviverfeliz
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.cristiano.ongviverfeliz.databinding.ActivityHomeBinding
@@ -12,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 
 class HomeActivity : AppCompatActivity() {
+
+    private var temPermissaoGaleria = false
 
     private val auth by lazy{
         FirebaseAuth.getInstance()
@@ -42,6 +48,26 @@ class HomeActivity : AppCompatActivity() {
         }
         binding.btnListarContratos.setOnClickListener {
             startActivity(Intent(this, ListaContratosActivity::class.java))
+        }
+        solicitarPermissoes()
+    }
+
+    private fun solicitarPermissoes() {
+        temPermissaoGaleria = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED
+
+        val listaPermissoesNegadas = mutableListOf<String>()
+
+        if(!temPermissaoGaleria ){
+            listaPermissoesNegadas.add(Manifest.permission.READ_MEDIA_IMAGES)
+        }
+
+        if (listaPermissoesNegadas.isNotEmpty()){
+            val gerenciarPermissoes = registerForActivityResult(
+                ActivityResultContracts.RequestMultiplePermissions()
+            ){permissoes ->
+                temPermissaoGaleria = permissoes[Manifest.permission.READ_MEDIA_IMAGES] ?: temPermissaoGaleria
+            }
+            gerenciarPermissoes.launch(listaPermissoesNegadas.toTypedArray())
         }
     }
 
