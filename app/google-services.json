@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "71835604132",
-    "project_id": "testesfirebase-f5324",
-    "storage_bucket": "testesfirebase-f5324.appspot.com"
+    "project_number": "90095880008",
+    "project_id": "appongviverfeliz",
+    "storage_bucket": "appongviverfeliz.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:71835604132:android:8e6ad590493d6fda274231",
+        "mobilesdk_app_id": "1:90095880008:android:e00f8cdc5b4803d7da157d",
         "android_client_info": {
-          "package_name": "com.aislandayvson.testefirebase"
+          "package_name": "com.cristiano.ongviverfeliz"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBO5cqDMnl7coXeMF013aVlcV-25z03v4k"
+          "current_key": "AIzaSyAZ42Q7epegZL7QhyqOSYWlbXlj_QIsomk"
         }
       ],
       "services": {
