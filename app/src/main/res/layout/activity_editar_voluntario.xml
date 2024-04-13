@@ -364,7 +364,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textImagensEditar" />
 
         <Button
-            android:id="@+id/btn_assinatura"
+            android:id="@+id/buttonRg"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="20dp"
@@ -401,7 +401,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_assinatura" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonRg" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_layout_atividade_voluntaria"

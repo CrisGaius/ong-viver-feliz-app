@@ -352,6 +352,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="70dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
             android:text="Cópia RG"
             android:textColor="@color/white"
             android:textSize="12sp"
@@ -367,6 +371,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/white"
             android:text="Escolha um arquivo"
             android:textColor="@color/black"
             android:textStyle="normal"
@@ -383,6 +388,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
             android:layout_marginTop="7dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
             android:text="Cópia CPF"
             android:textColor="@color/white"
             android:textSize="12sp"
@@ -396,6 +405,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
+            android:backgroundTint="@color/white"
             android:text="Escolha um arquivo"
             android:textColor="@color/black"
             app:cornerRadius="8dp"
@@ -408,33 +418,68 @@
             android:id="@+id/textComprovanteResidenciaEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="19dp"
-            android:text="Comprovante de residência"
+            android:layout_marginEnd="83dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="Comprovante de Residência"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintEnd_toStartOf="@+id/textAssinaturaEditar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonCopiaRgEditar" />
 
         <Button
             android:id="@+id/buttonComprovanteResidenciaEditar"
             android:layout_width="wrap_content"
-            android:layout_height="47sp"
+            android:layout_height="48dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="13dp"
+            android:backgroundTint="@color/white"
             android:text="Escolha um arquivo"
             android:textColor="@color/black"
             app:cornerRadius="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintEnd_toStartOf="@+id/buttonAssinaturaEditar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textComprovanteResidenciaEditar" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline3"
+        <TextView
+            android:id="@+id/textAssinaturaEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="198dp"
-            app:layout_constraintGuide_percent="0.5" />
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="73dp"
+            android:shadowColor="#9E000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="10"
+            android:text="Assinatura"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textComprovanteResidenciaEditar"
+            app:layout_constraintTop_toBottomOf="@+id/buttonCopiaCpfEditar" />
+
+        <Button
+            android:id="@+id/buttonAssinaturaEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/white"
+            android:text="Escolha um arquivo"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/buttonComprovanteResidenciaEditar"
+            app:layout_constraintTop_toBottomOf="@+id/textAssinaturaEditar" />
 
         <Button
             android:id="@+id/buttonEditar"
@@ -454,17 +499,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonComprovanteResidenciaEditar"  />
+            app:layout_constraintTop_toBottomOf="@+id/buttonComprovanteResidenciaEditar" />
 
         <ImageView
             android:id="@+id/imgBaixo_Editar"
             android:layout_width="306dp"
             android:layout_height="289dp"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="-82dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="parent"
-            app:srcCompat="@drawable/bordas_app" />
+            app:srcCompat="@drawable/bordas_app"
+            tools:layout_editor_absoluteX="236dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
