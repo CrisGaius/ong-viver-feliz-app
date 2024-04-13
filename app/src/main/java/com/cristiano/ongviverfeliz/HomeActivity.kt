@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 
 class HomeActivity : AppCompatActivity() {
 
-    private var temPermissaoGaleria = false
+    var temPermissaoGaleria = false
 
     private val auth by lazy{
         FirebaseAuth.getInstance()
@@ -28,6 +28,11 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        inicializarEventosClique()
+        solicitarPermissoes()
+    }
+
+    private fun inicializarEventosClique() {
         binding.btnLogout.setOnClickListener {
             deslogarUsuario()
         }
@@ -49,7 +54,6 @@ class HomeActivity : AppCompatActivity() {
         binding.btnListarContratos.setOnClickListener {
             startActivity(Intent(this, ListaContratosActivity::class.java))
         }
-        solicitarPermissoes()
     }
 
     private fun solicitarPermissoes() {

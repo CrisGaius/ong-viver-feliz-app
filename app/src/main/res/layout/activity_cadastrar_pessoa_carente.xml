@@ -392,7 +392,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textImagens" />
 
         <Button
-            android:id="@+id/buttonRg"
+            android:id="@+id/btnRg"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginTop="7dp"
@@ -404,7 +404,7 @@
             android:textSize="14sp"
             android:textStyle="normal"
             app:cornerRadius="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonCpf"
+            app:layout_constraintEnd_toStartOf="@+id/btnCPF"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
@@ -428,7 +428,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textImagens" />
 
         <Button
-            android:id="@+id/buttonCpf"
+            android:id="@+id/btnCPF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -441,7 +441,7 @@
             app:cornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buttonRg"
+            app:layout_constraintStart_toEndOf="@+id/btnRg"
             app:layout_constraintTop_toBottomOf="@+id/textCpf" />
 
         <TextView
@@ -462,10 +462,10 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonRg" />
+            app:layout_constraintTop_toBottomOf="@+id/btnRg" />
 
         <Button
-            android:id="@+id/buttonComprovanteResidencia"
+            android:id="@+id/btnComprovResid"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_marginTop="4dp"
@@ -476,7 +476,7 @@
             android:textColorLink="@color/white"
             android:textSize="14sp"
             app:cornerRadius="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/buttonAssinatura"
+            app:layout_constraintEnd_toStartOf="@+id/btnAss"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
@@ -498,10 +498,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/textComprovanteResidencia"
-            app:layout_constraintTop_toBottomOf="@+id/buttonCpf" />
+            app:layout_constraintTop_toBottomOf="@+id/btnCPF" />
 
         <Button
-            android:id="@+id/buttonAssinatura"
+            android:id="@+id/btnAss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -510,7 +510,7 @@
             app:cornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buttonComprovanteResidencia"
+            app:layout_constraintStart_toEndOf="@+id/btnComprovResid"
             app:layout_constraintTop_toBottomOf="@+id/textAssinatura" />
 
         <Button
@@ -531,7 +531,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonComprovanteResidencia" />
+            app:layout_constraintTop_toBottomOf="@+id/btnComprovResid" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

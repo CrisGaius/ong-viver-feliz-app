@@ -1,18 +1,68 @@
 package com.cristiano.ongviverfeliz
 
 import android.Manifest
+import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.OpenableColumns
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.cristiano.ongviverfeliz.databinding.ActivityCadastrarPessoaCarenteBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import java.util.UUID
 
 class CadastrarPessoaCarenteActivity : AppCompatActivity() {
+
+    private var imageRgURL: String? = null
+    private var imageCPFURL: String? = null
+    private var imageComprovResidURL: String? = null
+    private var imageAssURL: String? = null
+
+    private val gerenciadorGaleriasRg = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        if (uri == null) {
+            Toast.makeText(this, "Nenhuma imagem de RG selecionada.", Toast.LENGTH_LONG).show()
+        } else {
+            uploadImagemStorage(uri, "RG")
+        }
+    }
+
+    private val gerenciadorGaleriasCPF = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        if (uri == null) {
+            Toast.makeText(this, "Nenhuma imagem de CPF selecionada.", Toast.LENGTH_LONG).show()
+        } else {
+            uploadImagemStorage(uri, "CPF")
+        }
+    }
+
+    private val gerenciadorGaleriasComprovResid = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        if (uri == null) {
+            Toast.makeText(this, "Nenhuma imagem de comprovante de residência selecionada.", Toast.LENGTH_LONG).show()
+        } else {
+            uploadImagemStorage(uri, "Comprovante de Residência")
+        }
+    }
+
+    private val gerenciadorGaleriasAss = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        if (uri == null) {
+            Toast.makeText(this, "Nenhuma imagem de assinatura selecionada.", Toast.LENGTH_LONG).show()
+        } else {
+            uploadImagemStorage(uri, "Assinatura")
+        }
+    }
 
     private lateinit var nome: String
     private lateinit var dataNasc: String
@@ -32,10 +82,66 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
     private val firestore by lazy{
         FirebaseFirestore.getInstance()
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         inicializarEventosClique()
+    }
+
+    private fun uploadImagemStorage(uri: Uri, tipoImagem: String) {
+        val refStorage = FirebaseStorage.getInstance().reference
+        val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
+        val imagemRef = refStorage.child("Imagens/$tipoImagem/$nomeArquivo")
+
+        nomeArquivo?.let {
+            imagemRef.putFile(uri)
+                .addOnSuccessListener { taskSnapshot ->
+                    imagemRef.downloadUrl.addOnSuccessListener { url ->
+                        when (tipoImagem) {
+                            "RG" -> {
+                                imageRgURL = url.toString()
+                                binding.btnRg.text = "Imagem selecionada"
+                            }
+                            "CPF" -> {
+                                imageCPFURL = url.toString()
+                                binding.btnCPF.text = "Imagem selecionada"
+                            }
+                            "Comprovante de Residência" -> {
+                                imageComprovResidURL = url.toString()
+                                binding.btnComprovResid.text = "Imagem selecionada"
+                            }
+                            "Assinatura" -> {
+                                imageAssURL = url.toString()
+                                binding.btnAss.text = "Imagem selecionada"
+                            }
+                        }
+                        Toast.makeText(this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener { e ->
+                        Toast.makeText(this, "Falha ao obter URL da imagem.", Toast.LENGTH_SHORT).show()
+                        e.printStackTrace()
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(this, "Falha ao carregar imagem.", Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                }
+        } ?: run {
+            Toast.makeText(this, "Falha ao obter nome do arquivo.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun pegarNomeArquivo(contentResolver: ContentResolver, uri: Uri): String?{
+        var fileName: String? = null
+        contentResolver.query(uri, null, null, null, null)?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val displayNameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (displayNameIndex != -1) {
+                    fileName = cursor.getString(displayNameIndex)
+                }
+            }
+        }
+        return fileName
     }
 
     private fun inicializarEventosClique() {
@@ -43,6 +149,18 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
             if( validarCampos()){
                 salvarDadosPessoasCarentes(nome, dataNasc, telefone, rg, cpf, email, rua, numeroResidencia, bairro, cidade, estado)
             }
+        }
+        binding.btnRg.setOnClickListener {
+            gerenciadorGaleriasRg.launch("image/*")
+        }
+        binding.btnCPF.setOnClickListener {
+            gerenciadorGaleriasCPF.launch("image/*")
+        }
+        binding.btnComprovResid.setOnClickListener {
+            gerenciadorGaleriasComprovResid.launch("image/*")
+        }
+        binding.btnAss.setOnClickListener {
+            gerenciadorGaleriasAss.launch("image/*")
         }
     }
 
@@ -72,7 +190,11 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
             "numeroResidencia" to numeroResidencia,
             "bairro" to bairro,
             "cidade" to cidade,
-            "estado" to estado
+            "estado" to estado,
+            "urlImagemRg" to imageRgURL,
+            "urlImagemCPF" to imageCPFURL,
+            "urlImagemComprovResid" to imageComprovResidURL,
+            "urlImagemAss" to imageAssURL
         )
         firestore.collection("PessoasCarentes").document(uuid).set(pessoaCarente).addOnSuccessListener {
             Toast.makeText(this, "Pessoa cadastrada com sucesso!", Toast.LENGTH_LONG).show()
@@ -102,10 +224,8 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
 
             Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_LONG).show()
             return false
-        }else{
+        } else {
             return true
         }
     }
-
-
 }
