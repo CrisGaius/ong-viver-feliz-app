@@ -42,9 +42,10 @@
             android:layout_width="306dp"
             android:layout_height="289dp"
             android:layout_marginTop="-82dp"
+            android:layout_marginEnd="-122dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
-            app:srcCompat="@drawable/bordas_app"
-            tools:layout_editor_absoluteX="227dp" />
+            app:srcCompat="@drawable/bordas_app" />
 
         <ImageView
             android:id="@+id/logoImagem"
@@ -413,10 +414,9 @@
             android:text="Cópia RG"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="@+id/btnRg"
             app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/btnRg"
             app:layout_constraintTop_toBottomOf="@+id/textImagens" />
 
         <Button
@@ -454,9 +454,8 @@
             android:text="Cópia CPF"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintEnd_toEndOf="@+id/btnCPF"
+            app:layout_constraintStart_toStartOf="@+id/btnCPF"
             app:layout_constraintTop_toBottomOf="@+id/textImagens" />
 
         <Button
@@ -492,10 +491,9 @@
             android:text="Comprovante de residência"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="@+id/btnComprovResid"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/btnComprovResid"
             app:layout_constraintTop_toBottomOf="@+id/btnRg" />
 
         <Button
@@ -532,9 +530,8 @@
             android:text="Assinatura"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintEnd_toEndOf="@+id/btnAss"
+            app:layout_constraintStart_toStartOf="@+id/btnAss"
             app:layout_constraintTop_toBottomOf="@+id/btnCPF" />
 
         <Button
@@ -573,27 +570,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnComprovResid" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="29dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="382dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="205dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
