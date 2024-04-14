@@ -42,10 +42,9 @@
             android:layout_width="306dp"
             android:layout_height="289dp"
             android:layout_marginTop="-82dp"
-            android:layout_marginEnd="-122dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="parent"
-            app:srcCompat="@drawable/bordas_app" />
+            app:srcCompat="@drawable/bordas_app"
+            tools:layout_editor_absoluteX="227dp" />
 
         <ImageView
             android:id="@+id/logoImagem"
@@ -63,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter"
             android:shadowColor="#9E000000"
             android:shadowDx="1"
             android:shadowDy="1"
@@ -81,8 +81,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
+            android:fontFamily="@font/inter_bold"
             android:text="Informações Pessoais"
             android:textColor="@color/black"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -92,7 +94,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputNomeLayout"
             style="@style/Widget.Material3.TextInputLayout.FilledBox"
-            android:layout_width="356dp"
+            android:layout_width="354dp"
             android:layout_height="58dp"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,9 +107,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="Nome"
                 android:inputType="text"
                 android:maxLength="100"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -131,9 +135,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="Data de Nascimento"
                 android:inputType="datetime|date"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,9 +160,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="Telefone"
                 android:inputType="number|phone"
                 android:maxLength="11"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -179,9 +187,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="RG"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -202,16 +212,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="CPF"
                 android:inputType="number"
                 android:maxLength="11"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputEmailLayout"
             style="@style/Widget.Material3.TextInputLayout.FilledBox"
-            android:layout_width="356dp"
+            android:layout_width="354dp"
             android:layout_height="58dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -224,9 +236,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:maxLength="100"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -236,8 +250,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
+            android:fontFamily="@font/inter_bold"
             android:text="Endereço"
             android:textColor="@color/black"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -247,7 +263,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputRuaLayout"
             style="@style/Widget.Material3.TextInputLayout.FilledBox"
-            android:layout_width="356dp"
+            android:layout_width="354dp"
             android:layout_height="58dp"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -259,9 +275,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="Rua"
                 android:inputType="text"
                 android:maxLength="100"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -283,9 +301,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="Nº da residência"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -307,9 +327,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="Bairro"
                 android:inputType="text"
                 android:maxLength="11"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -331,8 +353,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="@font/inter"
                 android:hint="Cidade"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -354,8 +378,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
+                android:fontFamily="sans-serif"
                 android:hint="Estado"
                 android:maxLength="11"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -364,6 +390,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
+            android:fontFamily="@font/inter_bold"
             android:text="Imagens"
             android:textColor="@color/black"
             android:textSize="16dp"
@@ -378,7 +405,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:layout_marginEnd="140dp"
+            android:fontFamily="@font/inter"
             android:shadowColor="#9E000000"
             android:shadowDx="1"
             android:shadowDy="1"
@@ -386,19 +413,22 @@
             android:text="Cópia RG"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textCpf"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
             app:layout_constraintTop_toBottomOf="@+id/textImagens" />
 
         <Button
             android:id="@+id/btnRg"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="13dp"
             android:backgroundTint="@color/white"
+            android:fontFamily="@font/inter"
+            android:paddingLeft="19dp"
+            android:paddingRight="19dp"
             android:text="Escolha um arquivo"
             android:textColor="@color/black"
             android:textColorLink="@color/white"
@@ -416,6 +446,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
+            android:fontFamily="@font/inter"
             android:shadowColor="#9E000000"
             android:shadowDx="1"
             android:shadowDy="1"
@@ -423,9 +454,9 @@
             android:text="Cópia CPF"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textRg"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
             app:layout_constraintTop_toBottomOf="@+id/textImagens" />
 
         <Button
@@ -434,6 +465,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:backgroundTint="@color/white"
+            android:fontFamily="@font/inter"
+            android:paddingLeft="19dp"
+            android:paddingRight="19dp"
             android:text="Escolha um arquivo"
             android:textColor="@color/black"
             android:textColorLink="@color/white"
@@ -449,9 +483,8 @@
             android:id="@+id/textComprovanteResidencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="83dp"
+            android:fontFamily="@font/inter"
             android:shadowColor="#9E000000"
             android:shadowDx="1"
             android:shadowDy="1"
@@ -459,10 +492,10 @@
             android:text="Comprovante de residência"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/textAssinatura"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
             app:layout_constraintTop_toBottomOf="@+id/btnRg" />
 
         <Button
@@ -472,6 +505,9 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="13dp"
             android:backgroundTint="@color/white"
+            android:fontFamily="@font/inter"
+            android:paddingLeft="19dp"
+            android:paddingRight="19dp"
             android:text="Escolha um arquivo"
             android:textColor="@color/black"
             android:textColorLink="@color/white"
@@ -488,7 +524,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="73dp"
+            android:fontFamily="@font/inter"
             android:shadowColor="#9E000000"
             android:shadowDx="1"
             android:shadowDy="1"
@@ -496,9 +532,9 @@
             android:text="Assinatura"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textComprovanteResidencia"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
             app:layout_constraintTop_toBottomOf="@+id/btnCPF" />
 
         <Button
@@ -507,6 +543,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:backgroundTint="@color/white"
+            android:fontFamily="@font/inter"
+            android:paddingLeft="19dp"
+            android:paddingRight="19dp"
             android:text="Escolha um arquivo"
             app:cornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -522,6 +561,7 @@
             android:layout_marginBottom="128dp"
             android:backgroundTint="@color/amarelo"
             android:backgroundTintMode="add"
+            android:fontFamily="@font/inter_bold"
             android:text="CADASTRAR"
             android:textColor="@color/black"
             android:textColorLink="@color/azul"
@@ -533,6 +573,27 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnComprovResid" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="29dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="382dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="205dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
