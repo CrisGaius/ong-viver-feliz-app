@@ -30,7 +30,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma assinatura selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            uploadImagemStorage(uri, "Assinatura Voluntario")
+            uploadImagemStorage(uri, "AssinaturaVol")
         }
     }
 
@@ -70,7 +70,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
                 .addOnSuccessListener { taskSnapshot ->
                     imagemRef.downloadUrl.addOnSuccessListener { url ->
                         when (tipoImagem) {
-                            "RG" -> {
+                            "AssinaturaVol" -> {
                                 imageAssinaturaVoluntarioURL = url.toString()
                                 binding.btnAssinaturaVoluntario.text = "Imagem selecionada"
                             }
