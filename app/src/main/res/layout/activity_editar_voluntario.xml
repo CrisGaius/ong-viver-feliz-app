@@ -86,6 +86,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInformacoesPessoaisEditar">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextNomeEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -109,6 +110,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputNomePreenchidoLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextDataNascEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -154,6 +156,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputDataNascPreenchidoLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextRgEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -176,6 +179,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputTelefonePreenchidoLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextCpfEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -197,6 +201,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputRgPreenchidoLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextEmailEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -231,6 +236,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textEnderecoEditar">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextRuaEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -255,6 +261,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputRuaPreenchidoLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextNumResidEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -278,6 +285,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputRuaPreenchidoLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextBairroEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -302,6 +310,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputNumResidenciaPreenchidoLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextCidadeEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -324,6 +333,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputBairroPreenchidoLayout">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idTextEstadoEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -424,7 +434,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_secao_trabalho">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextAtividadeVVoluntario"
+                android:id="@+id/idTextAtividadeVEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
@@ -460,7 +470,7 @@
             app:layout_constraintTop_toTopOf="@+id/text_layout_atividade_voluntaria">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextDiasSemanaVoluntario"
+                android:id="@+id/idTextDiasSemanaEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
@@ -497,7 +507,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_layout_atividade_voluntaria">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextHorarioVoluntario"
+                android:id="@+id/idTextHorarioEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
@@ -533,7 +543,7 @@
             app:layout_constraintTop_toTopOf="@+id/text_layout_horario">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextFormaTrabalhoVoluntario"
+                android:id="@+id/idTextFormaTrabalhoEditarVoluntario"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
@@ -550,7 +560,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnLogar"
+            android:id="@+id/btnEditarVoluntario"
             android:layout_width="0dp"
             android:layout_height="58dp"
             android:layout_marginStart="20dp"
@@ -558,7 +568,7 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/amarelo"
             android:fontFamily="@font/inter_bold"
-            android:text="@string/cadastrar"
+            android:text="EDITAR"
             android:textSize="21sp"
             android:textStyle="bold"
             app:cornerRadius="8dp"
