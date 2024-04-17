@@ -25,7 +25,7 @@
             android:name=".ListaContratosActivity"
             android:exported="false" />
         <activity
-            android:name=".ListaPessoasCarentesActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".EditarPessoaCarenteActivity"
@@ -43,7 +43,7 @@
             android:name=".AdicionarContratoActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ListaPessoasCarentesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
