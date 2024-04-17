@@ -30,7 +30,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma imagem de RG selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            uploadImagemStorage(uri, "RG")
+            uploadImagemStorage(uri, "RgPessoaCarente")
         }
     }
 
@@ -40,7 +40,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma imagem de CPF selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            uploadImagemStorage(uri, "CPF")
+            uploadImagemStorage(uri, "CpfPessoaCarente")
         }
     }
 
@@ -50,7 +50,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma imagem de comprovante de residência selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            uploadImagemStorage(uri, "Comprovante de Residência")
+            uploadImagemStorage(uri, "ComprovanteResidenciaPessoaCarente")
         }
     }
 
@@ -60,7 +60,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma imagem de assinatura selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            uploadImagemStorage(uri, "Assinatura")
+            uploadImagemStorage(uri, "AssinaturaPessoaCarente")
         }
     }
 
@@ -92,26 +92,26 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
     private fun uploadImagemStorage(uri: Uri, tipoImagem: String) {
         val refStorage = FirebaseStorage.getInstance().reference
         val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
-        val imagemRef = refStorage.child("Imagens/$tipoImagem/$nomeArquivo")
+        val imagemRef = refStorage.child("imagensPessoasCarentes/$tipoImagem/$nomeArquivo")
 
         nomeArquivo?.let {
             imagemRef.putFile(uri)
                 .addOnSuccessListener { taskSnapshot ->
                     imagemRef.downloadUrl.addOnSuccessListener { url ->
                         when (tipoImagem) {
-                            "RG" -> {
+                            "RgPessoaCarente" -> {
                                 imageRgURL = url.toString()
                                 binding.btnRg.text = "Imagem selecionada"
                             }
-                            "CPF" -> {
+                            "CpfPessoaCarente" -> {
                                 imageCPFURL = url.toString()
                                 binding.btnCPF.text = "Imagem selecionada"
                             }
-                            "Comprovante de Residência" -> {
+                            "ComprovanteResidenciaPessoaCarente" -> {
                                 imageComprovResidURL = url.toString()
                                 binding.btnComprovResid.text = "Imagem selecionada"
                             }
-                            "Assinatura" -> {
+                            "AssinaturaPessoaCarente" -> {
                                 imageAssURL = url.toString()
                                 binding.btnAss.text = "Imagem selecionada"
                             }
