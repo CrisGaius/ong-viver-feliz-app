@@ -76,7 +76,7 @@ class ListaVoluntarioActivity : AppCompatActivity() {
                     .create()
                     .show()
             } else {
-                val intent = Intent(this, EditarPessoaCarenteActivity::class.java)
+                val intent = Intent(this, EditarVoluntarioActivity::class.java)
                 intent.putExtra("id", id)
                 Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
                 startActivity(intent)
