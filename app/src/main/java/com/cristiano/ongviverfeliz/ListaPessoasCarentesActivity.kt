@@ -66,23 +66,25 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
 
         rvLista.adapter = AtributosListaAdapter(lista) { id, nome ->
 
-            AlertDialog.Builder(this)
-                .setTitle("Confirmar exclusão de $nome?")
-                .setMessage("Tem certeza disso?")
-                .setNegativeButton("Cancelar") { dialog, posicao ->
-                    dialog.dismiss()
-                }
-                .setPositiveButton("Remover") { dialog, posicao ->
-                    removerPessoaCarente(id)
-                }
-                .setCancelable(false)
-                .create()
-                .show()
-
-            //intent.putExtra("id", id)
-            //startActivity(
-                //Intent(this, EditarPessoaCarenteActivity::class.java)
-            //)
+            if (nome != "") {
+                AlertDialog.Builder(this)
+                    .setTitle("Confirmar exclusão de $nome?")
+                    .setMessage("Tem certeza disso?")
+                    .setNegativeButton("Cancelar") { dialog, posicao ->
+                        dialog.dismiss()
+                    }
+                    .setPositiveButton("Remover") { dialog, posicao ->
+                        removerPessoaCarente(id)
+                    }
+                    .setCancelable(false)
+                    .create()
+                    .show()
+            } else {
+                val intent = Intent(this, EditarPessoaCarenteActivity::class.java)
+                intent.putExtra("id", id)
+                Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
+                startActivity(intent)
+            }
         }
 
         rvLista.layoutManager = LinearLayoutManager(

@@ -17,13 +17,17 @@ class AtributosListaAdapter(
         val textId: TextView = itemView.findViewById(R.id.txtId)
         val textNomeArquivo: TextView = itemView.findViewById(R.id.textNomeArquivo)
         val iconeLixeira: ImageButton = itemView.findViewById(R.id.imageButton3)
+        val iconeEditar: ImageButton = itemView.findViewById(R.id.imageButton2)
 
         fun bind(atributosLista: AtributosLista) { //Conectar com a interface
             textId.text = atributosLista.id
             textNomeArquivo.text = atributosLista.nome
 
-            //Aplicar eventos de clique
-            //val context = iconeLixeira.context
+
+            iconeEditar.setOnClickListener {
+                clique(atributosLista.id, "")
+            }
+
             iconeLixeira.setOnClickListener {
                 clique(atributosLista.id, atributosLista.nome)
             }
