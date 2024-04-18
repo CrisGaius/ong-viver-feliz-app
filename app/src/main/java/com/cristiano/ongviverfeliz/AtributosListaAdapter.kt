@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class AtributosListaAdapter(
     private val lista: List<AtributosLista>,
-    private val clique: (String) -> Unit
+    private val clique: (String, String) -> Unit
 ): Adapter<AtributosListaAdapter.AtributosListaViewHolder>() {
 
     inner class AtributosListaViewHolder(val itemView: View) : ViewHolder(itemView) {
@@ -25,7 +25,7 @@ class AtributosListaAdapter(
             //Aplicar eventos de clique
             //val context = iconeLixeira.context
             iconeLixeira.setOnClickListener {
-                clique(atributosLista.id)
+                clique(atributosLista.id, atributosLista.nome)
             }
         }
     }

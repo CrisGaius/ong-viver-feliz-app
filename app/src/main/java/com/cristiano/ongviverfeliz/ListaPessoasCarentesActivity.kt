@@ -1,5 +1,6 @@
 package com.cristiano.ongviverfeliz
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -36,15 +37,6 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
         }
 
         listarDados()
-
-        /*val lista = mutableListOf(
-            PessoaCarente("1", "Cristiano Gomes dos Santos"),
-            PessoaCarente("2", "Pitomba José dos Santos"),
-            PessoaCarente("3", "Lívia Gomes dos Santos"),
-            PessoaCarente("4", "Júlia Gomes dos Santos"),
-            PessoaCarente("5", "Cristiane Gomes dos Santos"),
-        )*/
-
     }
 
     private fun listarDados() {
@@ -72,13 +64,25 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
     private fun configurarRecyclerView(lista: MutableList<AtributosLista>) {
         rvLista = findViewById(R.id.rvListaCarentes)
 
-        rvLista.adapter = AtributosListaAdapter(lista) { id ->
-            Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
+        rvLista.adapter = AtributosListaAdapter(lista) { id, nome ->
 
-            intent.putExtra("id", id)
-            startActivity(
-                Intent(this, EditarPessoaCarenteActivity::class.java)
-            )
+            AlertDialog.Builder(this)
+                .setTitle("Confirmar exclusão de $nome?")
+                .setMessage("Tem certeza disso?")
+                .setNegativeButton("Cancelar") { dialog, posicao ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton("Remover") { dialog, posicao ->
+                    removerPessoaCarente(id)
+                }
+                .setCancelable(false)
+                .create()
+                .show()
+
+            //intent.putExtra("id", id)
+            //startActivity(
+                //Intent(this, EditarPessoaCarenteActivity::class.java)
+            //)
         }
 
         rvLista.layoutManager = LinearLayoutManager(
@@ -86,5 +90,20 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
             RecyclerView.VERTICAL,
             false
         )
+    }
+
+    private fun removerPessoaCarente(id: String) {
+        val referenciaPessoaCarente = bancoDados
+            .collection("PessoasCarentes")
+            .document(id)
+
+        referenciaPessoaCarente
+            .delete()
+            .addOnSuccessListener {
+                Toast.makeText(this, "Pessoa carente excluída com sucesso.", Toast.LENGTH_LONG).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Erro ao deletar a pessoa carente.", Toast.LENGTH_LONG).show()
+            }
     }
 }

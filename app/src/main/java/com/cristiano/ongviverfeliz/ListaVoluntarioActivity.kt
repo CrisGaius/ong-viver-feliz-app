@@ -1,5 +1,6 @@
 package com.cristiano.ongviverfeliz
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -60,11 +61,23 @@ class ListaVoluntarioActivity : AppCompatActivity() {
     private fun configurarRecyclerView(lista: MutableList<AtributosLista>) {
         rvLista = findViewById(R.id.rvListaVoluntario)
 
-        rvLista.adapter = AtributosListaAdapter(lista) { id ->
-            Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
+        rvLista.adapter = AtributosListaAdapter(lista) { id, nome ->
 
-            intent.putExtra("id", id)
-            startActivity(Intent(this, EditarVoluntarioActivity::class.java))
+            AlertDialog.Builder(this)
+                .setTitle("Confirmar exclusão de $nome?")
+                .setMessage("Tem certeza disso?")
+                .setNegativeButton("Cancelar") { dialog, posicao ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton("Remover") { dialog, posicao ->
+                    removerVoluntario(id)
+                }
+                .setCancelable(false)
+                .create()
+                .show()
+
+            //intent.putExtra("id", id)
+            //startActivity(Intent(this, EditarVoluntarioActivity::class.java))
         }
 
         rvLista.layoutManager = LinearLayoutManager(
@@ -72,5 +85,20 @@ class ListaVoluntarioActivity : AppCompatActivity() {
             RecyclerView.VERTICAL,
             false
         )
+    }
+
+    private fun removerVoluntario(id: String) {
+        val referenciaVoluntario = bancoDados
+            .collection("Voluntários")
+            .document(id)
+
+        referenciaVoluntario
+            .delete()
+            .addOnSuccessListener {
+                Toast.makeText(this, "Voluntário excluído como sucesso.", Toast.LENGTH_LONG).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Erro ao deletar o voluntário.", Toast.LENGTH_LONG).show()
+            }
     }
 }
