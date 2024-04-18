@@ -26,9 +26,11 @@ class AdicionarContratoActivity : AppCompatActivity() {
         FirebaseFirestore.getInstance()
     }
 
-    private fun adicionarContratoNoFirestore(imageContratoURL: String) {
+    private fun adicionarContratoNoFirestore(imageContratoURL: String, caminhoImagem: String, nomeImagem: String) {
         val contratoData = mapOf(
-            "imageURL" to imageContratoURL
+            "imageURL" to imageContratoURL,
+            "caminhoImagem" to caminhoImagem,
+            "nomeImagem" to nomeImagem,
         )
 
         firestore.collection("contratos")
@@ -68,12 +70,13 @@ class AdicionarContratoActivity : AppCompatActivity() {
         val refStorage = FirebaseStorage.getInstance().reference
         val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
         val imagemRef = refStorage.child("contratos/$tipoImagem/$nomeArquivo")
+        val caminhoImagem = "contratos/$tipoImagem/$nomeArquivo"
 
         nomeArquivo?.let {
             imagemRef.putFile(uri)
                 .addOnSuccessListener { taskSnapshot ->
                     imagemRef.downloadUrl.addOnSuccessListener { url ->
-                        adicionarContratoNoFirestore(url.toString())
+                        adicionarContratoNoFirestore(url.toString(), caminhoImagem, nomeArquivo)
                         Toast.makeText(this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener { e ->
                         Toast.makeText(this, "Falha ao obter URL da imagem.", Toast.LENGTH_SHORT).show()

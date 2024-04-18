@@ -76,8 +76,6 @@ class ListaVoluntarioActivity : AppCompatActivity() {
                 .create()
                 .show()
 
-            //intent.putExtra("id", id)
-            //startActivity(Intent(this, EditarVoluntarioActivity::class.java))
         }
 
         rvLista.layoutManager = LinearLayoutManager(
@@ -98,7 +96,7 @@ class ListaVoluntarioActivity : AppCompatActivity() {
                 Toast.makeText(this, "Voluntário excluído como sucesso.", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener {
-                Toast.makeText(this, "Erro ao deletar o voluntário.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Erro ao deletar o voluntário. $it", Toast.LENGTH_LONG).show()
             }
     }
 }

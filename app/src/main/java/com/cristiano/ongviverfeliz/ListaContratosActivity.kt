@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cristiano.ongviverfeliz.databinding.ActivityListaContratosBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.storage
 
 class ListaContratosActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -39,7 +42,7 @@ class ListaContratosActivity : AppCompatActivity() {
             .collection("contratos")
 
         referenciaContrato.addSnapshotListener { querySnapshot, erro ->
-            val lista = mutableListOf<AtributosLista>()
+            val lista = mutableListOf<AtributosListaContrato>()
             val listaDocuments = querySnapshot?.documents
 
             listaDocuments?.forEach {documentSnapshot ->
@@ -47,22 +50,32 @@ class ListaContratosActivity : AppCompatActivity() {
 
                 if (dados != null) {
                     val id = documentSnapshot.id
-                    val imageUrl = dados["imageURL"].toString()
-                    lista.add(AtributosLista(id, imageUrl))
+                    val nomeImagem = dados["nomeImagem"].toString()
+                    val caminho = dados["caminhoImagem"].toString()
+                    lista.add(AtributosListaContrato(id, nomeImagem, caminho))
                 }
             }
             configurarRecyclerView(lista)
         }
     }
 
-    private fun configurarRecyclerView(lista: MutableList<AtributosLista>) {
+    private fun configurarRecyclerView(lista: MutableList<AtributosListaContrato>) {
         rvLista = findViewById(R.id.rvListaContratos)
 
-        rvLista.adapter = AtributosListaContratoAdapter(lista) { id ->
-            Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
+        rvLista.adapter = AtributosListaContratoAdapter(lista) { id, caminho ->
+            AlertDialog.Builder(this)
+                .setTitle("Confirmar exclusão?")
+                .setMessage("Tem certeza disso?")
+                .setNegativeButton("Cancelar") { dialog, posicao ->
+                    dialog.dismiss()
+                }
+                .setPositiveButton("Remover") { dialog, posicao ->
+                    removerContrato(id, caminho)
+                }
+                .setCancelable(false)
+                .create()
+                .show()
 
-            intent.putExtra("id", id)
-            startActivity(Intent(this, AdicionarContratoActivity::class.java))
         }
 
         rvLista.layoutManager = LinearLayoutManager(
@@ -71,5 +84,31 @@ class ListaContratosActivity : AppCompatActivity() {
             false
         )
 
+    }
+
+    private fun removerContrato(id: String, caminho: String) {
+        val referenciaContrato = bancoDados
+            .collection("contratos")
+            .document(id)
+
+        referenciaContrato
+            .delete()
+            .addOnSuccessListener {
+                val storage = FirebaseStorage.getInstance()
+
+                val referenciaImagem = storage.reference.child(caminho)
+
+                referenciaImagem
+                    .delete()
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Contrato excluído com sucesso.", Toast.LENGTH_LONG).show()
+                    }
+                    .addOnFailureListener { exception ->
+                        Toast.makeText(this, "Erro ao deletar a imagem do contrato. $exception", Toast.LENGTH_LONG).show()
+                    }
+            }
+            .addOnFailureListener {exception ->
+                Toast.makeText(this, "Erro ao deletar o contrato. $exception", Toast.LENGTH_LONG).show()
+            }
     }
 }

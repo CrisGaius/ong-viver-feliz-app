@@ -40,10 +40,10 @@
             android:name=".EditarVoluntarioActivity"
             android:exported="false" />
         <activity
-            android:name=".AdicionarContratoActivity"
+            android:name=".ListaVoluntarioActivity"
             android:exported="false" />
         <activity
-            android:name=".ListaVoluntarioActivity"
+            android:name=".AdicionarContratoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

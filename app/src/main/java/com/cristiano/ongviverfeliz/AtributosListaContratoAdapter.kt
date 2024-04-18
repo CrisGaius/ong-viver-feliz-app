@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class AtributosListaContratoAdapter(
-    private val lista: List<AtributosLista>,
-    private val clique: (String) -> Unit
+    private val lista: List<AtributosListaContrato>,
+    private val clique: (String, String) -> Unit
 ): Adapter<AtributosListaContratoAdapter.AtributosListaContratoViewHolder>() {
 
     inner class AtributosListaContratoViewHolder(val itemView: View) : ViewHolder(itemView) {
@@ -18,14 +18,14 @@ class AtributosListaContratoAdapter(
         val textNomeArquivo: TextView = itemView.findViewById(R.id.textNomeArquivo)
         val iconeLixeira: ImageButton = itemView.findViewById(R.id.imageButton3)
 
-        fun bind(atributosLista: AtributosLista) { //Conectar com a interface
-            textId.text = atributosLista.id
-            textNomeArquivo.text = atributosLista.nome
+        fun bind(atributosListaContrato: AtributosListaContrato) { //Conectar com a interface
+            textId.text = atributosListaContrato.id
+            textNomeArquivo.text = atributosListaContrato.nome
 
             //Aplicar eventos de clique
             //val context = iconeLixeira.context
             iconeLixeira.setOnClickListener {
-                clique(atributosLista.id)
+                clique(atributosListaContrato.id, atributosListaContrato.caminho)
             }
         }
     }
@@ -46,8 +46,8 @@ class AtributosListaContratoAdapter(
     }
 
     override fun onBindViewHolder(holder: AtributosListaContratoViewHolder, position: Int) {
-        val atributosLista = lista[position]
-        holder.bind(atributosLista)
+        val atributosListaContrato = lista[position]
+        holder.bind(atributosListaContrato)
     }
 
     override fun getItemCount(): Int {

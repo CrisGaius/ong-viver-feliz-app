@@ -103,7 +103,7 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
                 Toast.makeText(this, "Pessoa carente excluída com sucesso.", Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener {
-                Toast.makeText(this, "Erro ao deletar a pessoa carente.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Erro ao deletar a pessoa carente. $it", Toast.LENGTH_LONG).show()
             }
     }
 }
