@@ -13,7 +13,6 @@ class AtributosListaAdapter(
     private val clique: (String) -> Unit
 ): Adapter<AtributosListaAdapter.AtributosListaViewHolder>() {
 
-
     inner class AtributosListaViewHolder(val itemView: View) : ViewHolder(itemView) {
         val textId: TextView = itemView.findViewById(R.id.txtId)
         val textNomeArquivo: TextView = itemView.findViewById(R.id.textNomeArquivo)
