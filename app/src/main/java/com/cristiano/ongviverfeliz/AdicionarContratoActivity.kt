@@ -1,39 +1,118 @@
 package com.cristiano.ongviverfeliz
 
-import android.app.Activity
+
+import android.content.ContentResolver
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
+import android.provider.OpenableColumns
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.cristiano.ongviverfeliz.databinding.ActivityAdicionarContratoBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+
 
 class AdicionarContratoActivity : AppCompatActivity() {
-    private val PICK_IMAGE_REQUEST = 1
+
+    private val binding by lazy{
+        ActivityAdicionarContratoBinding.inflate(layoutInflater)
+    }
+
+    private var imageContratoUri: Uri? = null
+
+    private val firestore by lazy{
+        FirebaseFirestore.getInstance()
+    }
+
+    private fun adicionarContratoNoFirestore(imageContratoURL: String) {
+        val contratoData = mapOf(
+            "imageURL" to imageContratoURL
+        )
+
+        firestore.collection("contratos")
+            .add(contratoData)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Contrato adicionado com sucesso!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, HomeActivity::class.java))
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Falha ao adicionar contrato: ${e.message}", Toast.LENGTH_SHORT).show()
+                e.printStackTrace()
+            }
+    }
+
+
+    private val gerenciadorGaleriasContrato = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        if (uri == null) {
+            Toast.makeText(this, "Nenhum contrato selecionado.", Toast.LENGTH_LONG).show()
+        } else {
+            imageContratoUri = uri
+            binding.btnEscolhaContrato.text = "Imagem selecionada"
+        }
+    }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_adicionar_contrato)
-        val botaoSelecionarArquivo = findViewById<Button>(R.id.btn_add_contrato)
-        botaoSelecionarArquivo.setOnClickListener {
-            mostrarSeletorDeArquivo()
+        setContentView(binding.root)
+        inicializarEventosClique()
+
+    }
+
+    private fun uploadImagemStorage(uri: Uri, tipoImagem: String) {
+        val refStorage = FirebaseStorage.getInstance().reference
+        val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
+        val imagemRef = refStorage.child("contratos/$tipoImagem/$nomeArquivo")
+
+        nomeArquivo?.let {
+            imagemRef.putFile(uri)
+                .addOnSuccessListener { taskSnapshot ->
+                    imagemRef.downloadUrl.addOnSuccessListener { url ->
+                        adicionarContratoNoFirestore(url.toString())
+                        Toast.makeText(this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener { e ->
+                        Toast.makeText(this, "Falha ao obter URL da imagem.", Toast.LENGTH_SHORT).show()
+                        e.printStackTrace()
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(this, "Falha ao carregar imagem.", Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                }
+        } ?: run {
+            Toast.makeText(this, "Falha ao obter nome do arquivo.", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun mostrarSeletorDeArquivo() {
-        val intentSelecionarArquivo = Intent(Intent.ACTION_GET_CONTENT)
-        intentSelecionarArquivo.type = "image/*"
-        startActivityForResult(intentSelecionarArquivo, PICK_IMAGE_REQUEST)
+    private fun pegarNomeArquivo(contentResolver: ContentResolver, uri: Uri): String?{
+        var fileName: String? = null
+        contentResolver.query(uri, null, null, null, null)?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val displayNameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (displayNameIndex != -1) {
+                    fileName = cursor.getString(displayNameIndex)
+                }
+            }
+        }
+        return fileName
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            // Arquivo selecionado
-            val uriArquivoSelecionado = data.data
-            // Faça o que desejar com a URI do arquivo selecionado
+    private fun inicializarEventosClique() {
+        binding.btnEscolhaContrato.setOnClickListener {
+            gerenciadorGaleriasContrato.launch("image/*")
+        }
+
+        binding.btnAdicionarContrato.setOnClickListener {
+            if (imageContratoUri != null) {
+                uploadImagemStorage(imageContratoUri!!, "Contrato")
+            } else {
+                Toast.makeText(this, "Nenhum contrato selecionado.", Toast.LENGTH_LONG).show()
+            }
         }
     }
-
 }

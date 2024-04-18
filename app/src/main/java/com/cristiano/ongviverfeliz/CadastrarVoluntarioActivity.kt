@@ -30,7 +30,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma assinatura selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            uploadImagemStorage(uri, "AssinaturaVol")
+            uploadImagemStorage(uri, "AssinaturaVoluntario")
         }
     }
 
@@ -63,14 +63,14 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
     private fun uploadImagemStorage(uri: Uri, tipoImagem: String) {
         val refStorage = FirebaseStorage.getInstance().reference
         val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
-        val imagemRef = refStorage.child("Imagens/$tipoImagem/$nomeArquivo")
+        val imagemRef = refStorage.child("imagensVoluntarios/$tipoImagem/$nomeArquivo")
 
         nomeArquivo?.let {
             imagemRef.putFile(uri)
                 .addOnSuccessListener { taskSnapshot ->
                     imagemRef.downloadUrl.addOnSuccessListener { url ->
                         when (tipoImagem) {
-                            "AssinaturaVol" -> {
+                            "AssinaturaVoluntario" -> {
                                 imageAssinaturaVoluntarioURL = url.toString()
                                 binding.btnAssinaturaVoluntario.text = "Imagem selecionada"
                             }
@@ -106,7 +106,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
     private fun inicializarEventosClique() {
         binding.btnCadastrarVoluntario.setOnClickListener {
             if( validarCampos()){
-                salvarDadosPessoasCarentes(nome, dataNasc, telefone, rg, cpf, email, rua, numeroResidencia, bairro, cidade, atvVoluntaria, diaSemana, estado, formaTrabalho, horario)
+                salvarDadosPessoasCarentes(nome, dataNasc, telefone, rg, cpf, email, rua, numeroResidencia, bairro, cidade, estado, atvVoluntaria, horario, diaSemana, formaTrabalho)
             }
         }
         binding.btnAssinaturaVoluntario.setOnClickListener {

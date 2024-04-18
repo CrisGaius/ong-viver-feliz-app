@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.41000003" />
 
     <Button
-        android:id="@+id/btn_add_contrato"
+        android:id="@+id/btnEscolhaContrato"
         android:layout_width="0dp"
         android:layout_height="50sp"
         android:layout_marginStart="30dp"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_add_contrato" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAdicionarContrato"
         android:layout_width="0dp"
         android:layout_height="55sp"
         android:layout_marginStart="30dp"
@@ -85,7 +85,7 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add_contrato" />
+        app:layout_constraintTop_toBottomOf="@+id/btnEscolhaContrato" />
 
     <ImageView
         android:id="@+id/imageView2"
