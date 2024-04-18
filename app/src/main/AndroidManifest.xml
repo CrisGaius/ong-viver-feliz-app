@@ -37,13 +37,13 @@
             android:name=".CadastrarVoluntarioActivity"
             android:exported="false" />
         <activity
-            android:name=".EditarVoluntarioActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".AdicionarContratoActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".EditarVoluntarioActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cristiano.ongviverfeliz.databinding.ActivityListaPessoasCarentesBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ListaPessoasCarentesActivity : AppCompatActivity() {
+class   ListaPessoasCarentesActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityListaPessoasCarentesBinding.inflate(layoutInflater)
     }
