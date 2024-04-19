@@ -124,7 +124,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/linha2"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baixar" />
+                app:srcCompat="@drawable/ic_visualizar_img_24" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
