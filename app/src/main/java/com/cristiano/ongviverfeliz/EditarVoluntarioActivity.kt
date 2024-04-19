@@ -1,12 +1,17 @@
 package com.cristiano.ongviverfeliz
 
+import android.content.ContentResolver
+import android.net.Uri
 import android.os.Bundle
+import android.provider.OpenableColumns
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.cristiano.ongviverfeliz.databinding.ActivityEditarVoluntarioBinding
 import com.cristiano.ongviverfeliz.modelo.Voluntario
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObject
+import com.google.firebase.storage.FirebaseStorage
 
 class EditarVoluntarioActivity : AppCompatActivity() {
     private val binding by lazy{
@@ -16,6 +21,18 @@ class EditarVoluntarioActivity : AppCompatActivity() {
         FirebaseFirestore.getInstance()
     }
     private val uuid = "fd868c4d-d85f-4b8c-9326-239f53abf2c3"
+
+    private var imageAssinaturaVoluntarioURLAtualizado: String? = null
+
+    private val gerenciadorGaleriasAssinaturaVoluntario = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri ->
+        if (uri == null) {
+            Toast.makeText(this, "Nenhuma assinatura selecionada.", Toast.LENGTH_LONG).show()
+        } else {
+            uploadImagemStorage(uri, "AssinaturaVoluntario")
+        }
+    }
 
     private lateinit var nomeAtualizado: String
     private lateinit var dataNascAtualizado: String
@@ -46,6 +63,49 @@ class EditarVoluntarioActivity : AppCompatActivity() {
         }*/
     }
 
+    private fun uploadImagemStorage(uri: Uri, tipoImagem: String) {
+        val refStorage = FirebaseStorage.getInstance().reference
+        val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
+        val imagemRef = refStorage.child("imagensVoluntarios/$tipoImagem/$nomeArquivo")
+
+        nomeArquivo?.let {
+            imagemRef.putFile(uri)
+                .addOnSuccessListener { taskSnapshot ->
+                    imagemRef.downloadUrl.addOnSuccessListener { url ->
+                        when (tipoImagem) {
+                            "AssinaturaVoluntario" -> {
+                                imageAssinaturaVoluntarioURLAtualizado = url.toString()
+                                binding.btnEscolhaAssinaturaAtualizada.text = "Imagem selecionada"
+                            }
+                        }
+                        Toast.makeText(this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener { e ->
+                        Toast.makeText(this, "Falha ao obter URL da imagem.", Toast.LENGTH_SHORT).show()
+                        e.printStackTrace()
+                    }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(this, "Falha ao carregar imagem.", Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
+                }
+        } ?: run {
+            Toast.makeText(this, "Falha ao obter nome do arquivo.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun pegarNomeArquivo(contentResolver: ContentResolver, uri: Uri): String?{
+        var fileName: String? = null
+        contentResolver.query(uri, null, null, null, null)?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                val displayNameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (displayNameIndex != -1) {
+                    fileName = cursor.getString(displayNameIndex)
+                }
+            }
+        }
+        return fileName
+    }
+
     private fun inicializarEventosClique() {
         binding.btnEditarVoluntario.setOnClickListener {
             if(validarCampos()){
@@ -68,6 +128,9 @@ class EditarVoluntarioActivity : AppCompatActivity() {
                     horarioAtualizado
                 )
             }
+        }
+        binding.btnEscolhaAssinaturaAtualizada.setOnClickListener {
+            gerenciadorGaleriasAssinaturaVoluntario.launch("image/*")
         }
     }
 
@@ -102,6 +165,7 @@ class EditarVoluntarioActivity : AppCompatActivity() {
             "bairro" to bairroAtualizado,
             "cidade" to cidadeAtualizado,
             "estado" to estadoAtualizado,
+            "urlImagemAss" to imageAssinaturaVoluntarioURLAtualizado,
             "atividadeVoluntaria" to atvVoluntariaAtualizado,
             "horario" to horarioAtualizado,
             "diaSemana" to diaSemanaAtualizado,
