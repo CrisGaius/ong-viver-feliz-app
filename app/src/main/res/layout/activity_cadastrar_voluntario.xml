@@ -95,6 +95,8 @@
             android:layout_width="356dp"
             android:layout_height="58dp"
             android:layout_marginTop="12dp"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInformacoesPessoais">
@@ -108,6 +110,8 @@
                 android:hint="Nome"
                 android:inputType="text"
                 android:maxLength="100"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -123,7 +127,9 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputNomeLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputNomeLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -146,7 +152,9 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/inputDataNascLayout"
-            app:layout_constraintTop_toBottomOf="@+id/inputNomeLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputNomeLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -172,7 +180,9 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputDataNascLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputDataNascLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextRGVoluntario"
@@ -195,7 +205,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/inputRgLayout"
-            app:layout_constraintTop_toBottomOf="@+id/inputTelefoneLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputTelefoneLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextCPFVoluntario"
@@ -217,7 +229,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputRgLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputRgLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextEmailVoluntario"
@@ -252,7 +266,9 @@
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textEndereco">
+            app:layout_constraintTop_toBottomOf="@+id/textEndereco"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextRuaVoluntario"
@@ -276,7 +292,9 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputRuaLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputRuaLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextNumResidVoluntario"
@@ -300,7 +318,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/inputNumResidenciaLayout"
-            app:layout_constraintTop_toBottomOf="@+id/inputRuaLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputRuaLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextBairroVoluntario"
@@ -324,7 +344,9 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputNumResidenciaLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputNumResidenciaLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextCidadeVoluntario"
@@ -346,7 +368,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/inputCidadeLayout"
-            app:layout_constraintTop_toBottomOf="@+id/inputBairroLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputBairroLayout"
+            android:textColorHint="@color/black"
+            app:hintTextColor="@color/black">
 
 
             <com.google.android.material.textfield.TextInputEditText
