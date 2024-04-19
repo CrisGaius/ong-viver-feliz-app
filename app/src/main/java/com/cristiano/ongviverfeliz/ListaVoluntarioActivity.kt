@@ -3,6 +3,7 @@ package com.cristiano.ongviverfeliz
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ class ListaVoluntarioActivity : AppCompatActivity() {
     }
 
     private lateinit var rvLista: RecyclerView
+    private lateinit var botaoPesquisar: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -36,6 +38,72 @@ class ListaVoluntarioActivity : AppCompatActivity() {
         }
 
         listarDados()
+
+        botaoPesquisar = binding.btnPesquisarVoluntario
+
+        pesquisarDados()
+    }
+
+    private fun pesquisarDados() {
+        botaoPesquisar.setOnClickListener {
+            val textoPesquisa = binding.editPesquisarVoluntario.text.toString().trim()
+
+            val referenciaColecao = bancoDados.collection("Voluntários")
+
+            if (textoPesquisa.isEmpty()) {
+                // Se o campo de pesquisa estiver vazio, mostrar todos os registros
+                Toast.makeText(this, "Por favor, digite algo.", Toast.LENGTH_SHORT).show()
+                listarDados()
+                return@setOnClickListener
+            }
+
+            val lista = mutableListOf<AtributosLista>() // Lista para armazenar os resultados das consultas
+
+            referenciaColecao.whereGreaterThanOrEqualTo("nome", textoPesquisa)
+                .whereLessThanOrEqualTo("nome", textoPesquisa + "\uf8ff")
+                .get()
+                .addOnSuccessListener { documents ->
+                    lista.clear() // Limpar a lista antes de adicionar novos resultados
+                    for (document in documents) {
+                        if (document != null) {
+                            val id = document.id
+                            val nome = document.getString("nome").toString()
+                            val listaCaminhos = mutableListOf<String>()
+                            listaCaminhos.add(document.getString("caminhoAss").toString())
+                            lista.add(AtributosLista(id, nome, listaCaminhos))
+                        }
+                    }
+
+                    // Se a consulta por nome retornar resultados, configurar o RecyclerView
+                    // Caso contrário, realizar a consulta por CPF
+                    if (lista.isNotEmpty()) {
+                        configurarRecyclerView(lista)
+                    } else {
+                        referenciaColecao.whereEqualTo("cpf", textoPesquisa)
+                            .get()
+                            .addOnSuccessListener { documents ->
+                                lista.clear() // Limpar a lista antes de adicionar novos resultados
+                                for (document in documents) {
+                                    if (document != null) {
+                                        val id = document.id
+                                        val nome = document.getString("nome").toString()
+                                        val listaCaminhos = mutableListOf<String>()
+                                        listaCaminhos.add(document.getString("caminhoAss").toString())
+                                        lista.add(AtributosLista(id, nome, listaCaminhos))
+                                    }
+                                }
+                                configurarRecyclerView(lista) // Configurar o RecyclerView após o término da consulta
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(this, "Falhou ao buscar por CPF: $it", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Falhou ao buscar por nome: $it", Toast.LENGTH_SHORT).show()
+                }
+
+        }
     }
 
     private fun listarDados() {
