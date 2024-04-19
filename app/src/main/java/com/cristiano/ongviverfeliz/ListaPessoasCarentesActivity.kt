@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cristiano.ongviverfeliz.databinding.ActivityListaPessoasCarentesBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 class   ListaPessoasCarentesActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -20,6 +21,10 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
 
     private val bancoDados by lazy {
         FirebaseFirestore.getInstance()
+    }
+
+    private val storage by lazy {
+        FirebaseStorage.getInstance()
     }
 
     private lateinit var rvLista: RecyclerView
@@ -53,7 +58,13 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
                 if (dados != null) {
                     val id = documentSnapshot.id
                     val nome = dados["nome"].toString()
-                    lista.add(AtributosLista(id,nome))
+                    val listaCaminhos = mutableListOf<String>()
+                    listaCaminhos.add(dados["caminhoAss"].toString())
+                    listaCaminhos.add(dados["caminhoComprovResid"].toString())
+                    listaCaminhos.add(dados["caminhoCpf"].toString())
+                    listaCaminhos.add(dados["caminhoRg"].toString())
+
+                    lista.add(AtributosLista(id,nome, listaCaminhos))
                 }
             }
             configurarRecyclerView(lista)
@@ -64,7 +75,7 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
     private fun configurarRecyclerView(lista: MutableList<AtributosLista>) {
         rvLista = findViewById(R.id.rvListaCarentes)
 
-        rvLista.adapter = AtributosListaAdapter(lista) { id, nome ->
+        rvLista.adapter = AtributosListaAdapter(lista) { id, nome, listaCaminhos ->
 
             if (nome != "") {
                 AlertDialog.Builder(this)
@@ -74,7 +85,7 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
                         dialog.dismiss()
                     }
                     .setPositiveButton("Remover") { dialog, posicao ->
-                        removerPessoaCarente(id)
+                        removerPessoaCarente(id, listaCaminhos)
                     }
                     .setCancelable(false)
                     .create()
@@ -94,7 +105,7 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
         )
     }
 
-    private fun removerPessoaCarente(id: String) {
+    private fun removerPessoaCarente(id: String, listaCaminhos: MutableList<String>) {
         val referenciaPessoaCarente = bancoDados
             .collection("PessoasCarentes")
             .document(id)
@@ -102,10 +113,53 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
         referenciaPessoaCarente
             .delete()
             .addOnSuccessListener {
-                Toast.makeText(this, "Pessoa carente excluída com sucesso.", Toast.LENGTH_LONG).show()
+                removerImagens(listaCaminhos)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Erro ao deletar a pessoa carente. $it", Toast.LENGTH_LONG).show()
+            }
+    }
+
+    private fun removerImagens(listaCaminhos: MutableList<String>) {
+        val referenciaAss = storage.reference.child(listaCaminhos[0])
+        val referenciaComprovResid = storage.reference.child(listaCaminhos[1])
+        val referenciaCpf = storage.reference.child(listaCaminhos[2])
+        val referenciaRg = storage.reference.child(listaCaminhos[3])
+
+        referenciaAss
+            .delete()
+            .addOnSuccessListener {
+                referenciaComprovResid
+                    .delete()
+                    .addOnSuccessListener {
+                        referenciaCpf
+                            .delete()
+                            .addOnSuccessListener {
+                                referenciaRg
+                                    .delete()
+                                    .addOnSuccessListener {
+                                        Toast.makeText(this, "Pessoa carente excluída com sucesso.", Toast.LENGTH_LONG).show()
+                                    }
+                                    .addOnFailureListener {
+                                        Toast.makeText(this, "Erro ao excluir a imagem do Rg. $it",
+                                            Toast.LENGTH_SHORT)
+                                            .show()
+                                    }
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(this, "Erro ao excluir a imagem do cpf. $it",
+                                    Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Erro ao excluir a imagem do comprovante de residência. $it",
+                            Toast.LENGTH_SHORT)
+                            .show()
+                    }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Erro ao excluir a imagem da assinatura. $it", Toast.LENGTH_SHORT).show()
             }
     }
 }

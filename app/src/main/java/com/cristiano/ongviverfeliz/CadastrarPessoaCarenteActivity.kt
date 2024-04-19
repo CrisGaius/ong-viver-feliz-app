@@ -20,9 +20,13 @@ import java.util.UUID
 class CadastrarPessoaCarenteActivity : AppCompatActivity() {
 
     private var imageRgURL: String? = null
+    private var caminhoRg: String? = null
     private var imageCPFURL: String? = null
+    private var caminhoCpf: String? = null
     private var imageComprovResidURL: String? = null
+    private var caminhoComprovResid: String? = null
     private var imageAssURL: String? = null
+    private var caminhoAss: String? = null
 
     private val gerenciadorGaleriasRg = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -93,6 +97,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         val refStorage = FirebaseStorage.getInstance().reference
         val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
         val imagemRef = refStorage.child("imagensPessoasCarentes/$tipoImagem/$nomeArquivo")
+        val caminhoImagem = "imagensPessoasCarentes/$tipoImagem/$nomeArquivo"
 
         nomeArquivo?.let {
             imagemRef.putFile(uri)
@@ -101,18 +106,22 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
                         when (tipoImagem) {
                             "RgPessoaCarente" -> {
                                 imageRgURL = url.toString()
+                                caminhoRg = caminhoImagem
                                 binding.btnRg.text = "Imagem selecionada"
                             }
                             "CpfPessoaCarente" -> {
                                 imageCPFURL = url.toString()
+                                caminhoCpf = caminhoImagem
                                 binding.btnCPF.text = "Imagem selecionada"
                             }
                             "ComprovanteResidenciaPessoaCarente" -> {
                                 imageComprovResidURL = url.toString()
+                                caminhoComprovResid = caminhoImagem
                                 binding.btnComprovResid.text = "Imagem selecionada"
                             }
                             "AssinaturaPessoaCarente" -> {
                                 imageAssURL = url.toString()
+                                caminhoAss = caminhoImagem
                                 binding.btnAss.text = "Imagem selecionada"
                             }
                         }
@@ -192,9 +201,13 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
             "cidade" to cidade,
             "estado" to estado,
             "urlImagemRg" to imageRgURL,
+            "caminhoRg" to caminhoRg,
             "urlImagemCPF" to imageCPFURL,
+            "caminhoCpf" to caminhoCpf,
             "urlImagemComprovResid" to imageComprovResidURL,
-            "urlImagemAss" to imageAssURL
+            "caminhoComprovResid" to caminhoComprovResid,
+            "urlImagemAss" to imageAssURL,
+            "caminhoAss" to caminhoAss
         )
         firestore.collection("PessoasCarentes").document(uuid).set(pessoaCarente).addOnSuccessListener {
             Toast.makeText(this, "Pessoa cadastrada com sucesso!", Toast.LENGTH_LONG).show()

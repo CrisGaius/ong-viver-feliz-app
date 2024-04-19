@@ -23,6 +23,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
     }
 
     private var imageAssinaturaVoluntarioURL: String? = null
+    private var caminhoAss: String? = null
 
     private val gerenciadorGaleriasAssinaturaVoluntario = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -64,6 +65,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         val refStorage = FirebaseStorage.getInstance().reference
         val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
         val imagemRef = refStorage.child("imagensVoluntarios/$tipoImagem/$nomeArquivo")
+        val caminhoImagem = "imagensVoluntarios/$tipoImagem/$nomeArquivo"
 
         nomeArquivo?.let {
             imagemRef.putFile(uri)
@@ -72,6 +74,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
                         when (tipoImagem) {
                             "AssinaturaVoluntario" -> {
                                 imageAssinaturaVoluntarioURL = url.toString()
+                                caminhoAss = caminhoImagem
                                 binding.btnAssinaturaVoluntario.text = "Imagem selecionada"
                             }
                         }
@@ -147,6 +150,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
             "cidade" to cidade,
             "estado" to estado,
             "urlImagemAss" to imageAssinaturaVoluntarioURL,
+            "caminhoAss" to caminhoAss,
             "atividadeVoluntaria" to atividadeVoluntaria,
             "horario" to horario,
             "diaSemana" to diaSemana,

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cristiano.ongviverfeliz.databinding.ActivityListaVoluntarioBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 class ListaVoluntarioActivity : AppCompatActivity() {
     private val binding by lazy {
@@ -51,7 +52,9 @@ class ListaVoluntarioActivity : AppCompatActivity() {
                 if (dados != null) {
                     val id = documentSnapshot.id
                     val nome = dados["nome"].toString()
-                    lista.add(AtributosLista(id, nome))
+                    val listaCaminhos = mutableListOf<String>()
+                    listaCaminhos.add(dados["caminhoAss"].toString())
+                    lista.add(AtributosLista(id, nome, listaCaminhos))
                 }
             }
             configurarRecyclerView(lista)
@@ -61,7 +64,7 @@ class ListaVoluntarioActivity : AppCompatActivity() {
     private fun configurarRecyclerView(lista: MutableList<AtributosLista>) {
         rvLista = findViewById(R.id.rvListaVoluntario)
 
-        rvLista.adapter = AtributosListaAdapter(lista) { id, nome ->
+        rvLista.adapter = AtributosListaAdapter(lista) { id, nome, listaCaminhos ->
             if (nome != "") {
                 AlertDialog.Builder(this)
                     .setTitle("Confirmar exclusão de $nome?")
@@ -70,7 +73,7 @@ class ListaVoluntarioActivity : AppCompatActivity() {
                         dialog.dismiss()
                     }
                     .setPositiveButton("Remover") { dialog, posicao ->
-                        removerVoluntario(id)
+                        removerVoluntario(id, listaCaminhos)
                     }
                     .setCancelable(false)
                     .create()
@@ -90,7 +93,7 @@ class ListaVoluntarioActivity : AppCompatActivity() {
         )
     }
 
-    private fun removerVoluntario(id: String) {
+    private fun removerVoluntario(id: String, listaCaminhos: MutableList<String>) {
         val referenciaVoluntario = bancoDados
             .collection("Voluntários")
             .document(id)
@@ -98,7 +101,20 @@ class ListaVoluntarioActivity : AppCompatActivity() {
         referenciaVoluntario
             .delete()
             .addOnSuccessListener {
-                Toast.makeText(this, "Voluntário excluído como sucesso.", Toast.LENGTH_LONG).show()
+                val storage = FirebaseStorage.getInstance()
+
+                val referenciaAss = storage.reference.child(listaCaminhos[0])
+
+                referenciaAss
+                    .delete()
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Voluntário excluído como sucesso.", Toast.LENGTH_LONG).show()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Erro ao excluir a imagem da assinatura. $it",
+                            Toast.LENGTH_SHORT)
+                            .show()
+                    }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Erro ao deletar o voluntário. $it", Toast.LENGTH_LONG).show()
