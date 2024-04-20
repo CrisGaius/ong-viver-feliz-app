@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.webkit.WebView
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -30,10 +31,52 @@ class ListaContratosActivity : AppCompatActivity() {
     }
 
     private lateinit var rvLista: RecyclerView
+    private lateinit var botaoPesquisar: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         listarDados()
+
+        botaoPesquisar = binding.btnPesquisarContrato
+
+        pesquisarDados()
+    }
+
+    private fun pesquisarDados() {
+        botaoPesquisar.setOnClickListener {
+            val textoPesquisa = binding.editPesquisarContrato.text.toString()
+
+            val referenciaColecao = bancoDados.collection("contratos")
+
+            if (textoPesquisa.isEmpty()) {
+                Toast.makeText(this, "Por favor, digite algo.", Toast.LENGTH_SHORT).show()
+                listarDados()
+                return@setOnClickListener
+            }
+
+            val lista = mutableListOf<AtributosListaContrato>()
+
+            referenciaColecao
+                .whereGreaterThanOrEqualTo("nomeImagem", textoPesquisa)
+                .whereLessThanOrEqualTo("nomeImagem", textoPesquisa + "\uf8ff")
+                .get()
+                .addOnSuccessListener { documents ->
+                    lista.clear()
+                    for (document in documents) {
+                        if (document != null) {
+                            val id = document.id
+                            val nomeImagem = document.getString("nomeImagem").toString()
+                            val caminho = document.getString("caminhoImagem").toString()
+                            val imagemUrl = document.getString("imageURL").toString()
+                            lista.add(AtributosListaContrato(id, nomeImagem, caminho, imagemUrl))
+                        }
+                    }
+                    configurarRecyclerView(lista)
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Falhou ao buscar pelo nome da imagem: $it", Toast.LENGTH_SHORT).show()
+                }
+        }
     }
 
     private fun listarDados() {
@@ -44,6 +87,7 @@ class ListaContratosActivity : AppCompatActivity() {
             val lista = mutableListOf<AtributosListaContrato>()
             val listaDocuments = querySnapshot?.documents
 
+            binding.editPesquisarContrato.text.clear()
             listaDocuments?.forEach {documentSnapshot ->
                 val dados = documentSnapshot?.data
 

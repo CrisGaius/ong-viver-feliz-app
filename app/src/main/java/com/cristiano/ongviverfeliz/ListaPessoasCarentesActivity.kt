@@ -128,6 +128,7 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
             val lista = mutableListOf<AtributosLista>()
             val listaDocuments = querySnapshot?.documents
 
+            binding.editPesquisarCarente.text.clear()
             listaDocuments?.forEach { documentSnapshot ->
                 val dados = documentSnapshot?.data
 

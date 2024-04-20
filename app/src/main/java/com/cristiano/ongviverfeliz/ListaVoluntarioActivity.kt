@@ -114,6 +114,7 @@ class ListaVoluntarioActivity : AppCompatActivity() {
             val lista = mutableListOf<AtributosLista>()
             val listaDocuments = querySnapshot?.documents
 
+            binding.editPesquisarVoluntario.text.clear()
             listaDocuments?.forEach { documentSnapshot ->
                 val dados = documentSnapshot?.data
 
