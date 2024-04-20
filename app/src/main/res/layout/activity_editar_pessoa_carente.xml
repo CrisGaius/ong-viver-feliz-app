@@ -47,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/inter_bold"
             android:shadowColor="#9E000000"
             android:shadowDx="1"
             android:shadowDy="1"
