@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Nome Preenchido"
+                android:hint="Nome"
                 android:inputType="text"
                 android:maxLength="100"
                 android:textSize="14sp" />
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Data Preenchida"
+                android:hint="Data"
                 android:inputType="datetime|date"
                 android:maxLength="10"
                 android:textSize="14sp" />
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Telefone Preenchido"
+                android:hint="Telefone"
                 android:inputType="number|phone"
                 android:maxLength="10"
                 android:textSize="14sp" />
@@ -175,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="RG Preenchido"
+                android:hint="RG"
                 android:inputType="number"
                 android:maxLength="10"
                 android:textSize="14sp" />
@@ -201,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="CPF Preenchido"
+                android:hint="CPF "
                 android:inputType="number"
                 android:maxLength="10"
                 android:textSize="14sp" />
@@ -226,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Email Preenchido"
+                android:hint="Email "
                 android:inputType="text"
                 android:maxLength="100"
                 android:textSize="14sp" />
@@ -265,7 +265,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Rua Informada"
+                android:hint="Rua "
                 android:inputType="text"
                 android:maxLength="100"
                 android:textSize="14sp" />
@@ -293,7 +293,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Nº da Residência Informado"
+                android:hint="Nº da Residência"
                 android:inputType="number"
                 android:maxLength="10"
                 android:textSize="14sp" />
@@ -320,7 +320,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Bairro Informado"
+                android:hint="Bairro "
                 android:inputType="number"
                 android:maxLength="10"
                 android:textSize="14sp" />
@@ -348,7 +348,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Cidade Informada"
+                android:hint="Cidade"
                 android:inputType="number"
                 android:maxLength="10"
                 android:textSize="14sp" />
@@ -374,7 +374,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
-                android:hint="Estado Informado"
+                android:hint="Estado"
                 android:inputType="number"
                 android:maxLength="10"
                 android:textSize="14sp" />
