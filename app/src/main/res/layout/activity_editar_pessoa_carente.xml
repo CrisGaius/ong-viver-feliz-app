@@ -89,6 +89,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextNomeEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -116,6 +117,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextDataNascEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -141,6 +143,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextTelefoneEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -167,6 +170,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextRgEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -192,6 +196,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCpfEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -216,6 +221,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmailEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -254,6 +260,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextRuaEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -281,6 +288,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextNumResidEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -307,6 +315,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextBairroEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -334,6 +343,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextCidadeEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"
@@ -359,6 +369,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEstadoEditarPessoa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/fundo_arredondado_com_sombra"

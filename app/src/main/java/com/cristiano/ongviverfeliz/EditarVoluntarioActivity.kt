@@ -1,9 +1,11 @@
 package com.cristiano.ongviverfeliz
 
 import android.content.ContentResolver
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import com.cristiano.ongviverfeliz.modelo.Voluntario
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObject
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 
 class EditarVoluntarioActivity : AppCompatActivity() {
     private val binding by lazy{
@@ -20,7 +23,13 @@ class EditarVoluntarioActivity : AppCompatActivity() {
     private val firestore by lazy{
         FirebaseFirestore.getInstance()
     }
-    private val uuid = "fd868c4d-d85f-4b8c-9326-239f53abf2c3"
+    private val storage by lazy{
+        FirebaseStorage.getInstance()
+    }
+
+
+    private var urlImagemAntiga: String? = null
+    private var uuid: String? = null
 
     private var imageAssinaturaVoluntarioURLAtualizado: String? = null
 
@@ -55,12 +64,10 @@ class EditarVoluntarioActivity : AppCompatActivity() {
         setContentView(binding.root)
         inicializarEventosClique()
 
-        recuperarDados(uuid)
+        uuid = intent.getStringExtra("id")
 
-        //val uuid = intent.getStringExtra("uuid")
-        /*if(uuid != null){
-            preencherDados(uuid)
-        }*/
+        uuid?.let { recuperarDados(it) }
+
     }
 
     private fun uploadImagemStorage(uri: Uri, tipoImagem: String) {
@@ -72,10 +79,15 @@ class EditarVoluntarioActivity : AppCompatActivity() {
             imagemRef.putFile(uri)
                 .addOnSuccessListener { taskSnapshot ->
                     imagemRef.downloadUrl.addOnSuccessListener { url ->
+                        if(urlImagemAntiga != null){
+                            val refStorage: StorageReference = storage.getReferenceFromUrl(urlImagemAntiga!!)
+                            refStorage.delete().addOnSuccessListener {
+                                Log.i("info_delete", "Imagem deletada")
+                            }
+                        }
                         when (tipoImagem) {
                             "AssinaturaVoluntario" -> {
                                 imageAssinaturaVoluntarioURLAtualizado = url.toString()
-                                binding.btnEscolhaAssinaturaAtualizada.text = "Imagem selecionada"
                             }
                         }
                         Toast.makeText(this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show()
@@ -110,7 +122,7 @@ class EditarVoluntarioActivity : AppCompatActivity() {
         binding.btnEditarVoluntario.setOnClickListener {
             if(validarCampos()){
                 atualizarDados(
-                    uuid,
+                    uuid!!,
                     nomeAtualizado,
                     dataNascAtualizado,
                     telefoneAtualizado,
@@ -173,6 +185,7 @@ class EditarVoluntarioActivity : AppCompatActivity() {
         )
 
         firestore.collection("Voluntários").document(uuid).update(voluntarioAtualizado).addOnSuccessListener {
+            startActivity(Intent(this, HomeActivity::class.java))
         }.addOnFailureListener {e ->
             e.printStackTrace()
         }
@@ -180,6 +193,7 @@ class EditarVoluntarioActivity : AppCompatActivity() {
     private fun recuperarDados(uuid: String) {
          firestore.collection("Voluntários").document(uuid).get().addOnSuccessListener { dados ->
             if(dados != null){
+                urlImagemAntiga = dados.getString("urlImagemAss")
                 val voluntario = dados.toObject<Voluntario>()
                 preencherDados(voluntario)
             }

@@ -74,6 +74,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
                             "AssinaturaVoluntario" -> {
                                 imageAssinaturaVoluntarioURL = url.toString()
                                 caminhoAss = caminhoImagem
+                                binding.btnAssinaturaVoluntario.text = "Imagem selecionada"
                             }
                         }
                         Toast.makeText(this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show()
