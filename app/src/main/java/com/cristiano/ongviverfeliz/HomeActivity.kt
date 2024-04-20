@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -27,9 +28,15 @@ class HomeActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        inicializarEventosClique()
-        solicitarPermissoes()
+        val idUsuarioLogado = auth.currentUser?.uid
+        if(idUsuarioLogado != null) {
+            setContentView(binding.root)
+            inicializarEventosClique()
+            solicitarPermissoes()
+        } else {
+            startActivity(Intent(this, MainActivity::class.java))
+            Toast.makeText(this, "Você deve estar logado, primeiro.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun inicializarEventosClique() {
