@@ -2,6 +2,7 @@ package com.cristiano.ongviverfeliz
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
@@ -70,7 +71,10 @@ class ListaVoluntarioActivity : AppCompatActivity() {
                             val nome = document.getString("nome").toString()
                             val listaCaminhos = mutableListOf<String>()
                             listaCaminhos.add(document.getString("caminhoAss").toString())
-                            lista.add(AtributosLista(id, nome, listaCaminhos))
+
+                            val listaUrls = mutableListOf<String>()
+                            listaUrls.add(document.getString("urlImagemAss").toString())
+                            lista.add(AtributosLista(id, nome, listaCaminhos, listaUrls))
                         }
                     }
 
@@ -89,7 +93,11 @@ class ListaVoluntarioActivity : AppCompatActivity() {
                                         val nome = document.getString("nome").toString()
                                         val listaCaminhos = mutableListOf<String>()
                                         listaCaminhos.add(document.getString("caminhoAss").toString())
-                                        lista.add(AtributosLista(id, nome, listaCaminhos))
+
+                                        val listaUrls = mutableListOf<String>()
+                                        listaUrls.add(document.getString("urlImagemAss").toString())
+
+                                        lista.add(AtributosLista(id, nome, listaCaminhos, listaUrls))
                                     }
                                 }
                                 configurarRecyclerView(lista) // Configurar o RecyclerView após o término da consulta
@@ -123,7 +131,11 @@ class ListaVoluntarioActivity : AppCompatActivity() {
                     val nome = dados["nome"].toString()
                     val listaCaminhos = mutableListOf<String>()
                     listaCaminhos.add(dados["caminhoAss"].toString())
-                    lista.add(AtributosLista(id, nome, listaCaminhos))
+
+                    val listaUrls = mutableListOf<String>()
+                    listaUrls.add(dados["urlImagemAss"].toString())
+
+                    lista.add(AtributosLista(id, nome, listaCaminhos, listaUrls))
                 }
             }
             configurarRecyclerView(lista)
@@ -133,20 +145,11 @@ class ListaVoluntarioActivity : AppCompatActivity() {
     private fun configurarRecyclerView(lista: MutableList<AtributosLista>) {
         rvLista = findViewById(R.id.rvListaVoluntario)
 
-        rvLista.adapter = AtributosListaAdapter(lista) { id, nome, listaCaminhos ->
-            if (nome != "") {
-                AlertDialog.Builder(this)
-                    .setTitle("Confirmar exclusão de $nome?")
-                    .setMessage("Tem certeza disso?")
-                    .setNegativeButton("Cancelar") { dialog, posicao ->
-                        dialog.dismiss()
-                    }
-                    .setPositiveButton("Remover") { dialog, posicao ->
-                        removerVoluntario(id, listaCaminhos)
-                    }
-                    .setCancelable(false)
-                    .create()
-                    .show()
+        rvLista.adapter = AtributosListaAdapter(lista) { id, nome, listaCaminhos, listaUrls ->
+            if (nome != "" && nome != "viewImages") {
+                abrirAlertDialogExclusao(id, nome, listaCaminhos)
+            } else if(nome == "viewImages") {
+                abrirAlertDialogViewImages(listaUrls)
             } else {
                 val intent = Intent(this, EditarVoluntarioActivity::class.java)
                 intent.putExtra("id", id)
@@ -160,6 +163,54 @@ class ListaVoluntarioActivity : AppCompatActivity() {
             RecyclerView.VERTICAL,
             false
         )
+    }
+
+    private fun abrirAlertDialogViewImages(listaUrls: MutableList<String>) {
+        val urlAssinatura = listaUrls[0]
+
+        val images = arrayOf("Imagem Assinatura")
+        AlertDialog.Builder(this)
+            .setTitle("Selecione uma imagem")
+            .setItems(images) { _, which ->
+                val selectedImage = images[which]
+
+                if(selectedImage == "Imagem Assinatura") {
+                    abrirNavegador(urlAssinatura)
+                } else {
+                    Toast.makeText(this, "Algo deu errado na seleção de imagens.", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .create()
+            .show()
+    }
+
+    private fun abrirNavegador(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
+    private fun abrirAlertDialogExclusao(
+        id: String,
+        nome: String,
+        listaCaminhos: MutableList<String>
+    ) {
+        AlertDialog.Builder(this)
+            .setTitle("Confirmar exclusão de $nome?")
+            .setMessage("Tem certeza disso?")
+            .setNegativeButton("Cancelar") { dialog, posicao ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("Remover") { dialog, posicao ->
+                removerVoluntario(id, listaCaminhos)
+            }
+            .setCancelable(false)
+            .create()
+            .show()
     }
 
     private fun removerVoluntario(id: String, listaCaminhos: MutableList<String>) {

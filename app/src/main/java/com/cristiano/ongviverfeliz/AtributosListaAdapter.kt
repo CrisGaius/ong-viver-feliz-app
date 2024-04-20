@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class AtributosListaAdapter(
     private val lista: List<AtributosLista>,
-    private val clique: (String, String, MutableList<String>) -> Unit
+    private val clique: (String, String, MutableList<String>, MutableList<String>) -> Unit
 ): Adapter<AtributosListaAdapter.AtributosListaViewHolder>() {
 
     inner class AtributosListaViewHolder(val itemView: View) : ViewHolder(itemView) {
@@ -23,13 +23,16 @@ class AtributosListaAdapter(
             textId.text = atributosLista.id
             textNomeArquivo.text = atributosLista.nome
 
+            textNomeArquivo.setOnClickListener {
+                clique(atributosLista.id, "viewImages", atributosLista.listaCaminhos, atributosLista.listaUrls)
+            }
 
             iconeEditar.setOnClickListener {
-                clique(atributosLista.id, "", mutableListOf())
+                clique(atributosLista.id, "", mutableListOf(), mutableListOf())
             }
 
             iconeLixeira.setOnClickListener {
-                clique(atributosLista.id, atributosLista.nome, atributosLista.listaCaminhos)
+                clique(atributosLista.id, atributosLista.nome, atributosLista.listaCaminhos, mutableListOf())
             }
         }
     }

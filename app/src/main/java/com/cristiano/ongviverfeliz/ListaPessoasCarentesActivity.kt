@@ -2,6 +2,7 @@ package com.cristiano.ongviverfeliz
 
 import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
@@ -80,7 +81,13 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
                             listaCaminhos.add(document.getString("caminhoCpf").toString())
                             listaCaminhos.add(document.getString("caminhoRg").toString())
 
-                            lista.add(AtributosLista(id, nome, listaCaminhos))
+                            val listaUrls = mutableListOf<String>()
+                            listaUrls.add(document.getString("urlImagemAss").toString())
+                            listaUrls.add(document.getString("urlImagemCPF").toString())
+                            listaUrls.add(document.getString("urlImagemComprovResid").toString())
+                            listaUrls.add(document.getString("urlImagemRg").toString())
+
+                            lista.add(AtributosLista(id, nome, listaCaminhos, listaUrls))
                         }
                     }
 
@@ -103,7 +110,13 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
                                         listaCaminhos.add(document.getString("caminhoCpf").toString())
                                         listaCaminhos.add(document.getString("caminhoRg").toString())
 
-                                        lista.add(AtributosLista(id, nome, listaCaminhos))
+                                        val listaUrls = mutableListOf<String>()
+                                        listaUrls.add(document.getString("urlImagemAss").toString())
+                                        listaUrls.add(document.getString("urlImagemCPF").toString())
+                                        listaUrls.add(document.getString("urlImagemComprovResid").toString())
+                                        listaUrls.add(document.getString("urlImagemRg").toString())
+
+                                        lista.add(AtributosLista(id, nome, listaCaminhos, listaUrls))
                                     }
                                 }
                                 configurarRecyclerView(lista) // Configurar o RecyclerView após o término da consulta
@@ -141,7 +154,13 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
                     listaCaminhos.add(dados["caminhoCpf"].toString())
                     listaCaminhos.add(dados["caminhoRg"].toString())
 
-                    lista.add(AtributosLista(id,nome, listaCaminhos))
+                    val listaUrls = mutableListOf<String>()
+                    listaUrls.add(dados["urlImagemAss"].toString())
+                    listaUrls.add(dados["urlImagemCPF"].toString())
+                    listaUrls.add(dados["urlImagemComprovResid"].toString())
+                    listaUrls.add(dados["urlImagemRg"].toString())
+
+                    lista.add(AtributosLista(id,nome, listaCaminhos, listaUrls))
                 }
             }
             configurarRecyclerView(lista)
@@ -152,21 +171,12 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
     private fun configurarRecyclerView(lista: MutableList<AtributosLista>) {
         rvLista = findViewById(R.id.rvListaCarentes)
 
-        rvLista.adapter = AtributosListaAdapter(lista) { id, nome, listaCaminhos ->
+        rvLista.adapter = AtributosListaAdapter(lista) { id, nome, listaCaminhos, listaUrls ->
 
-            if (nome != "") {
-                AlertDialog.Builder(this)
-                    .setTitle("Confirmar exclusão de $nome?")
-                    .setMessage("Tem certeza disso?")
-                    .setNegativeButton("Cancelar") { dialog, posicao ->
-                        dialog.dismiss()
-                    }
-                    .setPositiveButton("Remover") { dialog, posicao ->
-                        removerPessoaCarente(id, listaCaminhos)
-                    }
-                    .setCancelable(false)
-                    .create()
-                    .show()
+            if (nome != "" && nome != "viewImages") {
+                abrirAlertDialogExclusao(id, nome, listaCaminhos)
+            } else if(nome == "viewImages") {
+                abrirAlertDialogViewImages(listaUrls)
             } else {
                 val intent = Intent(this, EditarPessoaCarenteActivity::class.java)
                 intent.putExtra("id", id)
@@ -180,6 +190,55 @@ class   ListaPessoasCarentesActivity : AppCompatActivity() {
             RecyclerView.VERTICAL,
             false
         )
+    }
+
+    private fun abrirAlertDialogViewImages(listaUrls: MutableList<String>) {
+        val urlAssinatura = listaUrls[0]
+        val urlCpf = listaUrls[1]
+        val urlComprovResid = listaUrls[2]
+        val urlRg = listaUrls[3]
+
+        val images = arrayOf("Imagem Assinatura", "Imagem CPF", "Imagem Comp. Resid.", "Imagem RG")
+        AlertDialog.Builder(this)
+            .setTitle("Selecione uma imagem")
+            .setItems(images) {_, which ->
+                val selectedImage = images[which]
+                when (selectedImage) {
+                    "Imagem Assinatura" -> abrirNavegador(urlAssinatura)
+                    "Imagem CPF" -> abrirNavegador(urlCpf)
+                    "Imagem Comp. Resid." -> abrirNavegador(urlComprovResid)
+                    "Imagem RG" -> abrirNavegador(urlRg)
+                    else -> {
+                        Toast.makeText(this, "Algo deu errado na seleção de imagens.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            .setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .create()
+            .show()
+    }
+
+    private fun abrirNavegador(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
+    }
+
+    private fun abrirAlertDialogExclusao(id: String, nome: String, listaCaminhos: MutableList<String>) {
+        AlertDialog.Builder(this)
+            .setTitle("Confirmar exclusão de $nome?")
+            .setMessage("Tem certeza disso?")
+            .setNegativeButton("Cancelar") { dialog, posicao ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("Remover") { dialog, posicao ->
+                removerPessoaCarente(id, listaCaminhos)
+            }
+            .setCancelable(false)
+            .create()
+            .show()
     }
 
     private fun removerPessoaCarente(id: String, listaCaminhos: MutableList<String>) {
