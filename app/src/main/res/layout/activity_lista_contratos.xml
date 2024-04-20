@@ -61,6 +61,8 @@
         android:gravity="start"
         android:hint="Digite o nome do arquivo"
         android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textStyle="bold"
         app:circularflow_defaultRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"

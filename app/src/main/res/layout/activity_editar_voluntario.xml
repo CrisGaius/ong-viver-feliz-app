@@ -98,6 +98,7 @@
                 android:hint="Nome Preenchido"
                 android:inputType="text"
                 android:maxLength="100"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,6 +126,7 @@
                 android:hint="Data Preenchida"
                 android:inputType="datetime|date"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,6 +153,7 @@
                 android:hint="Telefone Preenchido"
                 android:inputType="number|phone"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,6 +181,7 @@
                 android:hint="RG Preenchido"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -204,6 +208,7 @@
                 android:hint="CPF Preenchido"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -229,6 +234,7 @@
                 android:hint="Email Preenchido"
                 android:inputType="text"
                 android:maxLength="100"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -268,6 +274,7 @@
                 android:hint="Rua Informada"
                 android:inputType="text"
                 android:maxLength="100"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -296,6 +303,7 @@
                 android:hint="Nº da Residência Informado"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -323,6 +331,7 @@
                 android:hint="Bairro Informado"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -351,6 +360,7 @@
                 android:hint="Cidade Informada"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -377,6 +387,7 @@
                 android:hint="Estado Informado"
                 android:inputType="number"
                 android:maxLength="10"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
