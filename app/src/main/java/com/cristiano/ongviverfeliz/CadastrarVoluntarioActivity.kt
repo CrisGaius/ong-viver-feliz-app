@@ -21,7 +21,6 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         ActivityCadastrarVoluntarioBinding.inflate(layoutInflater)
     }
 
-    private var imageAssinaturaVoluntarioURI: Uri? = null
     private var imageAssinaturaVoluntarioURL: String? = null
     private var caminhoAss: String? = null
 
@@ -31,8 +30,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma assinatura selecionada.", Toast.LENGTH_LONG).show()
         } else {
-           imageAssinaturaVoluntarioURI = uri
-            binding.btnAssinaturaVoluntario.text = "Imagem selecionada"
+            uploadImagemStorage(uri, "AssinaturaVoluntario")
         }
     }
 
@@ -110,11 +108,6 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         binding.btnCadastrarVoluntario.setOnClickListener {
             if( validarCampos()){
                 salvarDadosPessoasCarentes(nome, dataNasc, telefone, rg, cpf, email, rua, numeroResidencia, bairro, cidade, estado, atvVoluntaria, horario, diaSemana, formaTrabalho)
-            }
-            if (imageAssinaturaVoluntarioURI != null){
-                uploadImagemStorage(imageAssinaturaVoluntarioURI!!, "AssinaturaVoluntário")
-            }else{
-                Toast.makeText(this, "Nenhuma imagem selecionada", Toast.LENGTH_LONG).show()
             }
         }
         binding.btnAssinaturaVoluntario.setOnClickListener {

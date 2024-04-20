@@ -27,10 +27,6 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
     private var caminhoComprovResid: String? = null
     private var imageAssURL: String? = null
     private var caminhoAss: String? = null
-    private var imageURIRG: Uri? = null
-    private var imageURICPF: Uri? = null
-    private var imageURIComprovanteResid: Uri? = null
-    private var imageURIAssinatura: Uri? = null
 
     private val gerenciadorGaleriasRg = registerForActivityResult(
         ActivityResultContracts.GetContent()
@@ -38,8 +34,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma imagem de RG selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            imageURIRG = uri
-            binding.btnRg.text = "Imagem selecionada"
+            uploadImagemStorage(uri, "RgPessoaCarente")
         }
     }
 
@@ -49,8 +44,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma imagem de CPF selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            imageURICPF = uri
-            binding.btnCPF.text = "Imagem selecionada"
+            uploadImagemStorage(uri, "CpfPessoaCarente")
         }
     }
 
@@ -60,8 +54,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma imagem de comprovante de residência selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            imageURIComprovanteResid = uri
-            binding.btnComprovResid.text = "Imagem selecionada"
+            uploadImagemStorage(uri, "ComprovanteResidenciaPessoaCarente")
         }
     }
 
@@ -71,8 +64,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma imagem de assinatura selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            imageURIAssinatura = uri
-            binding.btnAss.text = "Imagem selecionada"
+            uploadImagemStorage(uri, "AssinaturaPessoaCarente")
         }
     }
 
@@ -165,18 +157,6 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         binding.btnCadastrarPessoasCarentes.setOnClickListener {
             if( validarCampos()){
                 salvarDadosPessoasCarentes(nome, dataNasc, telefone, rg, cpf, email, rua, numeroResidencia, bairro, cidade, estado)
-            }
-            if (imageURIRG != null){
-                uploadImagemStorage(imageURIRG!!, "RgPessoaCarente")
-            }
-            if (imageURICPF != null){
-                uploadImagemStorage(imageURIRG!!, "CpfPessoaCarente")
-            }
-            if (imageURIComprovanteResid != null){
-                uploadImagemStorage(imageURIRG!!, "ComprovanteResidenciaPessoaCarente")
-            }
-            if (imageURIAssinatura != null){
-                uploadImagemStorage(imageURIRG!!, "AssinaturaPessoaCarente")
             }
         }
         binding.btnRg.setOnClickListener {
