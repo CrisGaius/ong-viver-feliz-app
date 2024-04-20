@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -22,6 +21,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         ActivityCadastrarVoluntarioBinding.inflate(layoutInflater)
     }
 
+    private var imageAssinaturaVoluntarioURI: Uri? = null
     private var imageAssinaturaVoluntarioURL: String? = null
     private var caminhoAss: String? = null
 
@@ -31,7 +31,8 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         if (uri == null) {
             Toast.makeText(this, "Nenhuma assinatura selecionada.", Toast.LENGTH_LONG).show()
         } else {
-            uploadImagemStorage(uri, "AssinaturaVoluntario")
+           imageAssinaturaVoluntarioURI = uri
+            binding.btnAssinaturaVoluntario.text = "Imagem selecionada"
         }
     }
 
@@ -75,7 +76,6 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
                             "AssinaturaVoluntario" -> {
                                 imageAssinaturaVoluntarioURL = url.toString()
                                 caminhoAss = caminhoImagem
-                                binding.btnAssinaturaVoluntario.text = "Imagem selecionada"
                             }
                         }
                         Toast.makeText(this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show()
@@ -110,6 +110,11 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         binding.btnCadastrarVoluntario.setOnClickListener {
             if( validarCampos()){
                 salvarDadosPessoasCarentes(nome, dataNasc, telefone, rg, cpf, email, rua, numeroResidencia, bairro, cidade, estado, atvVoluntaria, horario, diaSemana, formaTrabalho)
+            }
+            if (imageAssinaturaVoluntarioURI != null){
+                uploadImagemStorage(imageAssinaturaVoluntarioURI!!, "AssinaturaVoluntário")
+            }else{
+                Toast.makeText(this, "Nenhuma imagem selecionada", Toast.LENGTH_LONG).show()
             }
         }
         binding.btnAssinaturaVoluntario.setOnClickListener {
