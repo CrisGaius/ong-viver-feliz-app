@@ -313,7 +313,7 @@
             android:drawableRight="@drawable/ic_sair_24"
             android:drawableTint="@color/white"
             android:fontFamily="@font/inter_bold"
-            android:text="Logout"
+            android:text="Sair"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="25sp"
