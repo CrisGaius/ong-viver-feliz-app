@@ -355,7 +355,7 @@
                 android:fontFamily="@font/inter"
                 android:hint="Bairro"
                 android:inputType="text"
-                android:maxLength="11"
+                android:maxLength="58"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp" />
@@ -383,7 +383,7 @@
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
                 android:hint="Cidade"
-                android:maxLength="10"
+                android:maxLength="58"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp" />
@@ -411,7 +411,7 @@
                 android:background="@drawable/fundo_arredondado_com_sombra"
                 android:fontFamily="@font/inter"
                 android:hint="Estado"
-                android:maxLength="11"
+                android:maxLength="58"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textSize="14sp" />
