@@ -189,7 +189,7 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
         cidade: String,
         estado: String
     ) {
-        val uuid = UUID.randomUUID().toString()
+        val uuid = UUID.randomUUID().toString().substring(0, 12)
 
         val pessoaCarente = mapOf(
             "nome" to nome,

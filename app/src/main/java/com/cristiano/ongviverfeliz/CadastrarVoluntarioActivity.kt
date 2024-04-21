@@ -137,7 +137,7 @@ class CadastrarVoluntarioActivity : AppCompatActivity() {
         diaSemana: String,
         formaTrabalho: String
     ) {
-        val uuid = UUID.randomUUID().toString()
+        val uuid = UUID.randomUUID().toString().substring(0, 12)
 
         val pessoaCarente = mapOf(
             "nome" to nome,
