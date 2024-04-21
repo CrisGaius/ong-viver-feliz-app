@@ -96,10 +96,13 @@ class CadastrarPessoaCarenteActivity : AppCompatActivity() {
     private fun uploadImagemStorage(uri: Uri, tipoImagem: String) {
         val refStorage = FirebaseStorage.getInstance().reference
         val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
-        val imagemRef = refStorage.child("imagensPessoasCarentes/$tipoImagem/$nomeArquivo")
-        val caminhoImagem = "imagensPessoasCarentes/$tipoImagem/$nomeArquivo"
+        val extensao = nomeArquivo?.substringAfterLast(".", "")
+        val nomeArquivoUnico = "${UUID.randomUUID().toString().substring(0,8)}.$extensao"
 
-        nomeArquivo?.let {
+        val imagemRef = refStorage.child("imagensPessoasCarentes/$tipoImagem/$nomeArquivoUnico")
+        val caminhoImagem = "imagensPessoasCarentes/$tipoImagem/$nomeArquivoUnico"
+
+        nomeArquivoUnico?.let {
             imagemRef.putFile(uri)
                 .addOnSuccessListener { taskSnapshot ->
                     imagemRef.downloadUrl.addOnSuccessListener { url ->

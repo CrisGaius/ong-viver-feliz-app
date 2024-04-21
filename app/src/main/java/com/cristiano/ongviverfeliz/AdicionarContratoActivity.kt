@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.cristiano.ongviverfeliz.databinding.ActivityAdicionarContratoBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import java.util.UUID
 
 
 class AdicionarContratoActivity : AppCompatActivity() {
@@ -69,14 +70,17 @@ class AdicionarContratoActivity : AppCompatActivity() {
     private fun uploadImagemStorage(uri: Uri, tipoImagem: String) {
         val refStorage = FirebaseStorage.getInstance().reference
         val nomeArquivo = pegarNomeArquivo(contentResolver, uri)
-        val imagemRef = refStorage.child("contratos/$tipoImagem/$nomeArquivo")
-        val caminhoImagem = "contratos/$tipoImagem/$nomeArquivo"
+        val extensao = nomeArquivo?.substringAfterLast(".", "")
+        val nomeArquivoUnico = "${UUID.randomUUID().toString().substring(0,8)}.$extensao"
 
-        nomeArquivo?.let {
+        val imagemRef = refStorage.child("contratos/$tipoImagem/$nomeArquivoUnico")
+        val caminhoImagem = "contratos/$tipoImagem/$nomeArquivoUnico"
+
+        nomeArquivoUnico?.let {
             imagemRef.putFile(uri)
                 .addOnSuccessListener { taskSnapshot ->
                     imagemRef.downloadUrl.addOnSuccessListener { url ->
-                        adicionarContratoNoFirestore(url.toString(), caminhoImagem, nomeArquivo)
+                        adicionarContratoNoFirestore(url.toString(), caminhoImagem, nomeArquivoUnico)
                         Toast.makeText(this, "Imagem carregada com sucesso!", Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener { e ->
                         Toast.makeText(this, "Falha ao obter URL da imagem.", Toast.LENGTH_SHORT).show()
