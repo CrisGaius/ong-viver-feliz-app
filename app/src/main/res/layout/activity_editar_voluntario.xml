@@ -207,7 +207,7 @@
                 android:fontFamily="@font/inter"
                 android:hint="CPF "
                 android:inputType="number"
-                android:maxLength="10"
+                android:maxLength="11"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
