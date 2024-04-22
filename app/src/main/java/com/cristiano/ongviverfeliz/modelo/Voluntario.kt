@@ -12,7 +12,7 @@ data class Voluntario(
      var bairro: String?  = null,
      var cidade: String?  = null,
      var estado: String?  = null,
-     var atvVoluntaria: String?  = null,
+     var atividadeVoluntaria: String?  = null,
      var diaSemana: String?  = null,
      var formaTrabalho: String?  = null,
      var horario: String?  = null

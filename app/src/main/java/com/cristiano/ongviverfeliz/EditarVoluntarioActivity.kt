@@ -214,7 +214,7 @@ class EditarVoluntarioActivity : AppCompatActivity() {
         binding.idTextBairroEditarVoluntario.setText(voluntario?.bairro ?: "")
         binding.idTextCidadeEditarVoluntario.setText(voluntario?.cidade ?: "")
         binding.idTextEstadoEditarVoluntario.setText(voluntario?.estado ?: "")
-        binding.idTextAtividadeVEditarVoluntario.setText(voluntario?.atvVoluntaria ?: "")
+        binding.idTextAtividadeVEditarVoluntario.setText(voluntario?.atividadeVoluntaria ?: "")
         binding.idTextDiasSemanaEditarVoluntario.setText(voluntario?.diaSemana ?: "")
         binding.idTextFormaTrabalhoEditarVoluntario.setText(voluntario?.formaTrabalho ?: "")
         binding.idTextHorarioEditarVoluntario.setText(voluntario?.horario ?: "")
